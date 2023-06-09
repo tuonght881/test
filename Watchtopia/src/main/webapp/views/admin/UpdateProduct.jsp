@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -203,34 +204,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <c:forEach var="item" items="${products}">
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Đồng Hồ LC Cao Cấp</td>
-                                <td>1 000 000</td>
-                                <td>Đồng hồ nam Thông minh </td>
+                                <th>${item.product_id}</th>
+                                <td>${item.product_name}</td>
+                                <td>${item.product_price}</td>
+                                <td>${item.product_describe}</td>
                                 <td><a href="#">Cập nhật</a></td>
                             </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Đồng Hồ LC Cao Cấp</td>
-                                <td>1 000 000</td>
-                                <td>Đồng hồ nam Thông minh </td>
-                                <td><a href="#">Cập nhật</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Đồng Hồ LC Cao Cấp</td>
-                                <td>1 000 000</td>
-                                <td>Đồng hồ nam Thông minh </td>
-                                <td><a href="#">Cập nhật</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Đồng Hồ LC Cao Cấp</td>
-                                <td>1 000 000</td>
-                                <td>Đồng hồ nam Thông minh </td>
-                                <td><a href="#">Cập nhật</a></td>
-                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
 
