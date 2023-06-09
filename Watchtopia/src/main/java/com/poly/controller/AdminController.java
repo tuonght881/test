@@ -46,6 +46,12 @@ public class AdminController {
 		return "/admin/AddProduct";
 	}
 	
+	
+	@GetMapping("/product/UpdateProduct")
+	public String getUpdateProduct(Model m) {
+		return "/admin/UpdateProduct";
+	}
+	
 	@PostMapping("/product/addproduct")
 	public String SetAddProduct(Model m, Products p) {
 		try {
