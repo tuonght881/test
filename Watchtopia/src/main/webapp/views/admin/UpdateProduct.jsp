@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -210,7 +211,7 @@
                                 <td>${item.product_name}</td>
                                 <td>${item.product_price}</td>
                                 <td>${item.product_describe}</td>
-                                <td><a href="#">Cập nhật</a></td>
+                                <td><a href="/product/edit/${item.product_id}">Cập nhật</a></td>
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -225,71 +226,82 @@
                             </ul>
                             <div class="tab-content pt-2">
                                 <div class="tab-pane fade show active pt-3" id="addProduct">
-                                    <form>
+                                    <form action="/product/UpdateProduct" method="get">
                                         <div class="row mb-3">
                                             <label for="" class="col-md-4 col-lg-3 col-form-label">Hình ảnh</label>
                                             <div class="col-md-8 col-lg-9">
-                                                <img src="/img/w1.png" alt="" style="width: 10%;">
+                                                <img src="/img/${item.product_img}" alt="" style="width: 10%;">
                                                 <div class="pt-2">
-                                                    <input type="file" id="file" style="display: none;">
-                                                    <a href="#file" class="btn btn-primary btn-sm"><i class="fa-solid fa-upload"></i></a>
-                                                    <a href="#" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></a>
+                                                   <input type="text" name="product_img" id="Filename" hidden>
+														<input type="file" class="fileform" id="formFile"
+															style="display: none;"> <label for="formFile"
+															id="customFile" onclick="defautlBtnIMG()"
+															class="btn btn-primary btn-sm"><i
+															class="fa-solid fa-upload"></i></label> <label id="deleteFile"
+															class="btn btn-danger btn-sm"><i
+															class="fa-solid fa-trash-can"></i></label>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Tên Sản Phẩm</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <input name="fullName" type="text" class="form-control" id="fullName" placeholder="Tên sản phẩm">
-                                            </div>
-                                        </div>
+											<label for="fullName"
+												class="col-md-4 col-lg-3 col-form-label">Tên Sản
+												Phẩm</label>
+											<div class="col-md-8 col-lg-9">
+												<input name="product_name" value="${item.product_name}" type="text" class="form-control"
+													id="fullName" placeholder="Tên sản phẩm">
+											</div>
+										</div>
 
-                                        <div class="row mb-3">
-                                            <label for="about" class="col-md-4 col-lg-3 col-form-label">Mô tả</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <textarea name="about" class="form-control" id="about" style="height: 100px">
+										<div class="row mb-3">
+											<label for="about" class="col-md-4 col-lg-3 col-form-label">Mô
+												tả</label>
+											<div class="col-md-8 col-lg-9">
+												<input name="product_describe" value="${item.product_describe}" class="form-control" type="text"
+													id="about" style="height: 100px"/>
                                                 
-                                                </textarea>
-                                            </div>
-                                        </div>
+                                               
+											</div>
+										</div>
 
-                                        <div class="row mb-3">
-                                            <label for="price" class="col-md-4 col-lg-3 col-form-label">Giá</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <input name="price" type="text" class="form-control" id="price">
-                                            </div>
-                                        </div>
+										<div class="row mb-3">
+											<label for="price" class="col-md-4 col-lg-3 col-form-label">Giá</label>
+											<div class="col-md-8 col-lg-9">
+												<input name="product_price" value="${item.product_price}" type="text" class="form-control"
+													id="price">
+											</div>
+										</div>
 
-                                        <div class="row mb-3">
-                                            <label for="brand" class="col-md-4 col-lg-3 col-form-label">Thương hiệu</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <select class="form-select" aria-label="Default select example">
-                                                    <option selected>LC</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                </select>
-                                            </div>
-                                        </div>
+										<div class="row mb-3">
+											<label for="brand" class="col-md-4 col-lg-3 col-form-label">Thương
+												hiệu</label>
+											<div class="col-md-8 col-lg-9">
+												<select class="form-select" name="branch"
+													aria-label="Default select example">
+													<c:forEach var="branchs" items="${branchsList}">
+														<option value="${branchs.brands_id}">${branchs.brands_name}</option>
+													</c:forEach>
+												</select>
+											</div>
+										</div>
 
-                                        <div class="row mb-3">
-                                            <label for="Country" class="col-md-4 col-lg-3 col-form-label">Loại</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <select class="form-select" aria-label="Default select example">
-                                                    <option selected>LC</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
+										<div class="row mb-3">
+											<label for="Country" class="col-md-4 col-lg-3 col-form-label">Loại</label>
+											<div class="col-md-8 col-lg-9">
+												<select class="form-select" name="type"
+													aria-label="Default select example">
+													<c:forEach var="types" items="${typesList}">
+														<option value="${types.types_id}">${types.types_name}</option>
+													</c:forEach>
+												</select>
+											</div>
+										</div>
                                         <div class="row mb-3">
                                             <label for="Country" class="col-md-4 col-lg-3 col-form-label"></label>
                                             <div class="col-md-8 col-lg-9">
-                                                <button type="submit" class="btn btn-primary">Cập nhật</button>
-                                                <button type="submit" class="btn btn-primary">Xóa</button>
+                                                <a type="submit" href="/product/update" class="btn btn-primary">Cập nhật</a>
+                                                <a type="submit" href="/product/delete/${item.product_id}" class="btn btn-primary">Xóa</a>
                                             </div>
 
                                         </div>
