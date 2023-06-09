@@ -16,6 +16,7 @@ import com.poly.service.SessionService;
 @Controller
 public class AccountController {
 //tr thien dep trai
+	//hao cu bu
 	@Autowired
 	ParamService paramSer;
 
