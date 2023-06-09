@@ -19,7 +19,7 @@ import com.poly.entity.Products;
 import com.poly.service.ParamService;
 
 @Controller
-public class AdminController {
+public class ProductController {
 	
 	@Autowired
 	ProductDAO dao;
@@ -33,7 +33,7 @@ public class AdminController {
 	@Autowired
 	ParamService param;
 	
-	
+	// Đầu Thêm sản phẩm
 	@GetMapping("/product/addproduct")
 	public String GetAddProduct(Model m) {
 		
@@ -46,11 +46,6 @@ public class AdminController {
 		return "/admin/AddProduct";
 	}
 	
-	
-	@GetMapping("/product/UpdateProduct")
-	public String getUpdateProduct(Model m) {
-		return "/admin/UpdateProduct";
-	}
 	
 	@PostMapping("/product/addproduct")
 	public String SetAddProduct(Model m, Products p) {
@@ -70,4 +65,23 @@ public class AdminController {
 		return "/admin/AddProduct";
 		
 	}
+	// Cuối Thêm sản phẩm
+	
+
+	// Đầu Cập nhật sản phẩm
+	@GetMapping("/product/UpdateProduct")
+	public String getUpdateProduct(Model m) {
+		
+		List<Products> p = dao.findAll();
+		
+		m.addAttribute("products", p);
+		return "/admin/UpdateProduct";
+		///
+	}
+	
+	
+	
+	
+	
+	// Đầu Cập nhật sản phẩm
 }
