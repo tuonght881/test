@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
+import com.poly.DAO.CartItemDAO;
 import com.poly.DAO.ProductDAO;
 import com.poly.DAO.ShoppingCartService;
 import com.poly.entity.CartItem;
@@ -22,9 +23,14 @@ import com.poly.entity.Users;
 public class ShoppingCart implements ShoppingCartService{
 	@Autowired
 	ProductDAO repo;
-	Map<Integer, CartItem> map = new HashMap<Integer, CartItem>();
+	
 	@Autowired
 	SessionService ss;
+	@Autowired
+	CartItemDAO cart;
+	
+	Map<Integer, CartItem> map = new HashMap<Integer, CartItem>();
+	
 //	@Override
 //	public List<CartItem2> getItems() {
 //		ArrayList<CartItem2> list = new ArrayList<CartItem2>();
@@ -38,16 +44,21 @@ public class ShoppingCart implements ShoppingCartService{
 	@Override
 	public void add(int id) {
 		Users u = ss.getAttribute("username");
-		Optional<Products> p = repo.findById(id);
-		if(p.isPresent()) {
-			CartItem item = map.get(p.get().getProduct_id()); 
+		Products p = repo.findById(id).get();
+//		if(p.isPresent()) {
+//			CartItem item = map.get(p.get().getProduct_id()); 
 //			if(item != null) {
 //				item.setQuatity(item.getQuatity() + 1);
 //			}
 //			else
-				item = new CartItem(u , p.get());
-			map.put(id, item);
-		}
+//				item = new CartItem(u , p.get());
+		CartItem item = new CartItem();
+		item.setProduct(p);
+		item.setUsers(u);
+//			map.put(id, item);
+//		}
+		
+		cart.save(item);
 	}
 
 	@Override
@@ -97,7 +108,11 @@ public class ShoppingCart implements ShoppingCartService{
 
 	@Override
 	public Collection<CartItem> getItems() {
-		return map.values();
+		ArrayList<CartItem> ds = new ArrayList<CartItem>();
+		for (Integer key : map.keySet()) {
+			ds.add(map.get(key));
+		}
+		return ds;
 	}
 	
 	

@@ -92,7 +92,7 @@
 						</li>
 
 						<li><a class="dropdown-item d-flex align-items-center"
-							href=""> <i class="fa-solid fa-arrow-right-from-bracket"></i>
+							href="/account/logout"> <i class="fa-solid fa-arrow-right-from-bracket"></i>
 								<span>Đăng Xuất</span>
 						</a></li>
 

@@ -31,6 +31,7 @@ public class AccountController {
 	@Autowired
 	UsersDAO dao;
 
+	// Đăng nhập
 	@GetMapping("/account/login")
 	public String getLogin(Model m) {
 
@@ -56,6 +57,7 @@ public class AccountController {
 
 				if (u.isRoles() != true) {
 					ssSer.setAttribute("username", u);
+					
 					if (remember) {
 						cookieSer.create("user", username, 10);
 						cookieSer.create("pass", password, 10);
@@ -225,6 +227,26 @@ public class AccountController {
 
 		}
 
+	}
+	
+	// Đăng xuất
+	@GetMapping("/account/logout")
+	public String logOut() {
+		ssSer.setAttribute("username", "");
+		cookieSer.delete("user");
+		cookieSer.delete("pass");
+		return "redirect:/account/login";
+	}
+	
+	// Trang cá nhân
+	@GetMapping("/account/profileUser")
+	public String getProfile(Model m) {
+		
+		Users u = ssSer.getAttribute("username");
+		
+		m.addAttribute("user", u);
+		
+		return "/home/profile";
 	}
 	
 	// Send Email Contact

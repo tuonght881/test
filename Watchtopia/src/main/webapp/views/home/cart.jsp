@@ -89,7 +89,7 @@
 														class="img-fluid rounded-3" style="width: 120px;" alt="">
 													<div class="flex-column ms-4">
 														<p class="mb-2">${item.product_name}</p>
-														<p class="mb-0">${item.type}</p>
+														<p class="mb-0">${item.type.types_name}</p>
 													</div>
 												</div>
 											</th>

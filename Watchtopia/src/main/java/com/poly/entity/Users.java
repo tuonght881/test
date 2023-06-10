@@ -50,7 +50,7 @@ public class Users implements Serializable{
 	
 	private int failed_login_attempts = 0;
 	private boolean blocked = false;
-	private boolean roles = true;
+	private boolean roles = false;
 	
 	
 	@JsonIgnore

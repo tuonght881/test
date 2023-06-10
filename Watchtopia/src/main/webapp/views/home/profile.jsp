@@ -47,7 +47,7 @@
                         <li><a href="#about" class="nav-link scrollto active"><i class="fa-solid fa-user text-white"></i> <span>Thông Tin Cá Nhân</span></a></li>
                         <li><a href="#updateProflie" class="nav-link scrollto"><i class="fa-solid fa-pen-to-square text-white"></i> <span>Cập Nhật Thông Tin Cá Nhân</span></a></li>
                         <li><a href="#passwordUpdate" class="nav-link scrollto"><i class="fa-solid fa-passport text-white"></i> <span>Đổi Mật Khẩu</span></a></li>
-                        <li><a href="" class="nav-link scrollto"><i class="fa-solid fa-arrow-right-from-bracket text-white"></i> <span>Đăng Xuất</span></a></li>
+                        <li><a href="/account/logout" class="nav-link scrollto"><i class="fa-solid fa-arrow-right-from-bracket text-white"></i> <span>Đăng Xuất</span></a></li>
                     </ul>
                 </nav>
             </div>
@@ -65,8 +65,8 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="card-body">
-                                    <h5 class="card-title">Lucas BC</h5>
-                                    <p class="card-text">Cậu nhóc không bao giờ lớn.</p>
+                                    <h5 class="card-title">${user.fullname}</h5>
+                                    <p class="card-text">Sinh Viên Công Nghệ Thông Tin</p>
                                     <p class="card-text"><small class="text-body-secondary">Cập nhật 3 tiếng trước</small></p>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
                                 </div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item"><i class="fa-solid fa-phone"></i> 083 856 5542</li>
-                                    <li class="list-group-item"><i class="fa-solid fa-envelope"></i> tungto753@gmail.com</li>
+                                    <li class="list-group-item"><i class="fa-solid fa-envelope"></i>${user.email}</li>
                                     <li class="list-group-item"><i class="fa-solid fa-location-dot"></i> Khóm 6A thị trấn sông đốc</li>
                                 </ul>
                             </div>
@@ -97,53 +97,28 @@
                             </div>
                         </div>
                         <div class="col-sm-8">
-                            <form action="">
+                            <form action="" method="post">
                                 <div class="row">
                                     <div class="col">
                                         <label for="">Họ và tên</label>
-                                        <input type="text" class="form-control" placeholder="Tô Quốc Tùng">
+                                        <input type="text" name="fullname" value="${user.fullname}" class="form-control" placeholder="Tô Quốc Tùng">
                                     </div>
                                     <div class="col">
                                         <label for="">Email</label>
-                                        <input type="text" class="form-control" placeholder="tungto753@gmail.com">
+                                        <input type="text" name="email" value="${user.email}" class="form-control" placeholder="tungto753@gmail.com">
                                     </div>
                                 </div>
                                 <div class="row" style="margin-top: 20px;">
                                     <div class="col">
-                                        <label for="">Tên đăng nhập</label>
-                                        <input type="text" class="form-control" placeholder="tungto753">
+                                        <label for="">Số điện thoại</label>
+                                        <input type="text" name="phone" value="${user.phone}" class="form-control" placeholder="tungto753">
                                     </div>
                                     <div class="col">
                                         <label for="">Mật khẩu</label>
-                                        <input type="text" class="form-control" placeholder="khongcomatkhau">
+                                        <input type="text" name="passwords" value="${user.passwords}" class="form-control" placeholder="khongcomatkhau">
                                     </div>
                                 </div>
-                                <div class="row" style="margin-top: 20px;">
-                                    <div class="col">
-                                        <label for="">Giới tính</label> <br>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
-                                            <label class="form-check-label" for="inlineRadio1">Nam</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                            <label class="form-check-label" for="inlineRadio2">Nữ</label>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <label for="">Năm sinh</label>
-                                        <input type="text" class="form-control" placeholder="04-10-2001">
-                                    </div>
-
-                                </div>
-                                <div class="row" style="margin-top: 20px;">
-                                    <div class="col">
-                                        <label for="exampleFormControlTextarea1" class="form-label">Địa chỉ</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">
-                                        Khóm 6A thị trấn sông đốc
-                                    </textarea>
-                                    </div>
-                                </div>
+                                
                             </form>
                         </div>
                     </div>
@@ -152,7 +127,7 @@
             <section id="updateProflie" class="updateProflie">
                 <div class="container ">
                     <h3><i class="fa-solid fa-grip-lines-vertical"></i> Cập Nhật Thông Tin Cá Nhân</h3>
-                    <form action="" class="container-update-proflie">
+                    <form action="" method="post" class="container-update-proflie">
                         <div class="row">
                             <div class="col-sm-4">
                                 <img src="/icon/avatarNEW.png" class="img-thumbnail" alt="..." style="width: 70%;padding: 10px; border: none;">
@@ -161,52 +136,22 @@
                                 <div class="row">
                                     <div class="col">
                                         <label for="">Họ và tên</label>
-                                        <input type="text" class="form-control" placeholder="Tô Quốc Tùng">
+                                        <input type="text" name="fullname" value="${user.fullname}" class="form-control" placeholder="Tô Quốc Tùng">
                                     </div>
                                     <div class="col">
                                         <label for="">Email</label>
-                                        <input type="text" class="form-control" placeholder="tungto753@gmail.com">
+                                        <input type="text" name="email" value="${user.email}" class="form-control" placeholder="tungto753@gmail.com">
                                     </div>
                                 </div>
-                                <div class="row" style="margin-top: 20px;">
+                                <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
                                     <div class="col">
-                                        <label for="">Tên đăng nhập</label>
-                                        <input type="text" class="form-control" placeholder="tungto753">
+                                        <label for="">Số điện thoại</label>
+                                        <input type="text" name="phone" value="${user.phone}" class="form-control" placeholder="tungto753">
                                     </div>
                                     <div class="col">
                                         <label for="">Mật khẩu</label>
-                                        <input type="text" class="form-control" placeholder="khongcomatkhau">
+                                        <input type="text" name="passwords" value="${user.passwords}" class="form-control" placeholder="khongcomatkhau">
                                     </div>
-                                </div>
-                                <div class="row" style="margin-top: 20px;">
-                                    <div class="col">
-                                        <label for="">Giới tính</label> <br>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
-                                            <label class="form-check-label" for="inlineRadio1">Nam</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                            <label class="form-check-label" for="inlineRadio2">Nữ</label>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <label for="">Năm sinh</label>
-                                        <input type="text" class="form-control" placeholder="04-10-2001">
-                                    </div>
-
-                                </div>
-                                <div class="row" style="margin-top: 20px;">
-                                    <div class="col">
-                                        <label for="exampleFormControlTextarea1" class="form-label">Địa chỉ</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">
-                                        Khóm 6A thị trấn sông đốc
-                                    </textarea>
-                                    </div>
-                                </div>
-                                <div class="input-group mb-3" style="margin-top:20px;">
-                                    <input type="file" class="form-control" id="inputGroupFile02">
-                                    <label class="input-group-text" for="inputGroupFile02">Tải File Lên</label>
                                 </div>
                                 <button type="button" class="btn btn-outline-secondary btn-update">Cập nhật</button>
                             </div>
@@ -217,26 +162,26 @@
             <section id="passwordUpdate">
                 <div class="container ">
                     <h3><i class="fa-solid fa-grip-lines-vertical"></i> Đổi Mật Khẩu</h3>
-                    <form action="" class="container-update-proflie" style="margin-bottom: 120px;">
+                    <form action="" method="get" class="container-update-proflie" style="margin-bottom: 120px;">
                         <strong>Đổi Mật Khẩu</strong><br>
                         <p>Để bảo mật tài khoản, vui lòng không chia sẻ mật khẩu với bất kỳ ai.</p>
                         <hr>
                         <div class="row mb-3">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Mật khẩu cũ</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputEmail3">
+                                <input type="text" name="passwords" class="form-control" id="inputEmail3">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Mật khẩu mới</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control" id="inputPassword3">
+                                <input type="password" name="passwordsNew" class="form-control" id="inputPassword3">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Nhập lại mật khẩu mới</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control" id="inputPassword3">
+                                <input type="password" name="passwordsNew2" class="form-control" id="inputPassword3">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -246,7 +191,7 @@
                             </div>
                         </div>
                         <hr>
-                        <a href="#" style="text-decoration: none; color:rgb(103, 103, 103);">
+                        <a href="/account/forgetPassword" style="text-decoration: none; color:rgb(103, 103, 103);">
                             <p class="text-center">Bạn quên mật khẩu?</p>
                         </a>
                     </form>

@@ -92,7 +92,7 @@
 								</div>
 							</div>
 
-							<a href="/account/profile"> <i class="fa fa-user"
+							<a href="/account/profileUser"> <i class="fa fa-user"
 								aria-hidden="true"></i>
 							</a> <a href=""> <i class="fa fa-cart-plus" aria-hidden="true"></i>
 							</a>
@@ -191,7 +191,7 @@
 						<div class="col-sm-6 col-xl-3">
 
 							<div class="box">
-								<a href="${p.product_id}">
+								<a href="/home/detailWatched/${p.product_id}">
 									<div class="img-box">
 										<img src="/img/${p.product_img}" alt="">
 									</div>

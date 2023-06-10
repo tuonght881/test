@@ -33,8 +33,10 @@ public class HomeController {
 	
 	@GetMapping("/home/detailWatched/{id}")
 	public String getDetailWatched(Model m , @PathVariable("id") int id) {
+		
 		Products p = dao.findById(id).get();
 		m.addAttribute("p", p);
+		
 		return "/home/detailWatched";
 	}
 	
