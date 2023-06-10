@@ -29,7 +29,7 @@
 <body>
 	<header id="header" class="header fixed-top d-flex align-items-center">
 		<div class="d-flex align-items-center justify-content-between">
-			<a href="index.html" class="logo d-flex align-items-center"> <img
+			<a href="/home/watch" class="logo d-flex align-items-center"> <img
 				src="/icon/smartwatch-app.png" alt=""> <span
 				class="d-none d-lg-block text-uppercase">Watchtopia</span>
 			</a> <i class="fa-solid fa-bars-staggered toggle-sidebar-btn"
