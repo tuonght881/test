@@ -52,6 +52,7 @@ public class AccountController {
 		return "/account/login";
 	}
 	// phương thức post 
+	// commit được đi mà 
 	@PostMapping("/account/login")
 	public String postLogin(Model m, Logs log) {
 		 
