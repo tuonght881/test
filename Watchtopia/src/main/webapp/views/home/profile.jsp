@@ -54,6 +54,7 @@
         </header>
 
         <main id="main">
+        
             <section id="about" class="about">
 
                 <div class="container">

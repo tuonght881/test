@@ -1,12 +1,16 @@
 package com.poly.controller;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.poly.DAO.LogsDAO;
 import com.poly.DAO.UsersDAO;
+import com.poly.entity.Logs;
 import com.poly.entity.Users;
 import com.poly.service.CookieService;
 import com.poly.service.EmailSenderService;
@@ -30,6 +34,9 @@ public class AccountController {
 
 	@Autowired
 	UsersDAO dao;
+	
+	@Autowired
+	LogsDAO logsDao;
 
 	// Đăng nhập
 	@GetMapping("/account/login")
@@ -46,7 +53,9 @@ public class AccountController {
 	}
 
 	@PostMapping("/account/login")
-	public String postLogin(Model m) {
+	public String postLogin(Model m, Logs log) {
+		 
+		
 		String username = paramSer.getString("email", "");
 		String password = paramSer.getString("password", "");
 		boolean remember = paramSer.getBoolea("remember", false);
@@ -65,7 +74,14 @@ public class AccountController {
 						cookieSer.delete("user");
 						cookieSer.delete("pass");
 					}
-
+					
+					
+					
+					log.setUser(u);
+					log.setLogin_time(new Date());
+					log.setLogin_out(null);
+					
+					logsDao.save(log);
 					return "redirect:/home/watch";
 				} else {
 					ssSer.setAttribute("username", u);
@@ -76,9 +92,16 @@ public class AccountController {
 						cookieSer.delete("user");
 						cookieSer.delete("pass");
 					}
+					
+					
+					log.setUser(u);
+					log.setLogin_time(new Date());
+					log.setLogin_out(null);
+					
+					logsDao.save(log);
 					return "redirect:/product/addproduct";
 				}
-
+				
 			} else {
 
 				m.addAttribute("errorPassword", true);
@@ -231,11 +254,22 @@ public class AccountController {
 	
 	// Đăng xuất
 	@GetMapping("/account/logout")
-	public String logOut() {
+	public String logOut(Logs log) {
 		ssSer.setAttribute("username", "");
 		cookieSer.delete("user");
 		cookieSer.delete("pass");
-		return "redirect:/account/login";
+		
+		
+		Logs Lastlogin = logsDao.findByKeywordsBySQL();
+		
+		log.setLog_id(Lastlogin.getLog_id());
+ 		log.setUser(Lastlogin.getUser());
+ 		log.setLogin_time(Lastlogin.getLogin_time());
+		log.setLogin_out(new Date());
+		
+		logsDao.save(log);
+		
+		return "/account/login";
 	}
 	
 	// Trang cá nhân
