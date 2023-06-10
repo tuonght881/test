@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -39,10 +40,16 @@ public class CartItemController {
 		return "/home/cart";
 	}
 
+	
 	@RequestMapping("/cart/add/{id}")
 	public String add(@PathVariable("id") Integer id) {
 		cart.add(id);
-		return "redirect:/cart/view"; 
+		return "redirect:/home/detailWatched/{id}";
+	}
+	@RequestMapping("/cart/buy/{id}")
+	public String buy(@PathVariable("id") Integer id) {
+		cart.add(id);
+		return "redirect:/cart/view";
 	}
 
 	@RequestMapping("/cart/remove/{id}")
@@ -62,4 +69,7 @@ public class CartItemController {
 		cart.clear();
 		return "redirect:/cart/view";
 	}
+	
+	//Đặt hàng
+	
 }

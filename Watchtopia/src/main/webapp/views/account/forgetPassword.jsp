@@ -17,26 +17,21 @@
 </head>
 <body>
 	<div class="cover">
-		<nav class="navbar navbar-expand-lg bg-body-tertiary">
-			<div class="container-fluid">
-				<a class="navbar-brand text-uppercase" href="#"
-					style="color: red; font-size: 30px;"> <img
-					src="/icon/smartwatch-app.png" alt="Logo" width="50" height="44"
-					class="d-inline-block align-text-top"> Watchtopia Shop
-				</a>
-
-				<div class="collapse navbar-collapse" id="navbarText">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="#"
-							style="font-size: 20px; font-weight: 400;">Quên Mật Khẩu</a></li>
-					</ul>
-					<span class="navbar-text"> <a href="#"
-						style="text-decoration: none; color: red;">Cần giúp đỡ?</a>
-					</span>
-				</div>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<a class="navbar-brand" href="/home/watch"
+						style="margin-left: 15px;"> <span class="text-uppercase">
+							Watchtopia Shop </span>
+					</a>
+				</ul>
+				<span class="navbar-text"> <a href="#"
+					style="text-decoration: none; color: red;">Cần giúp đỡ?</a>
+				</span>
 			</div>
-		</nav>
+		</div>
+	</nav>
 
 		<div class="popup">
 			<form class="form" action="/account/forgetPassword" method="post">

@@ -27,18 +27,8 @@
     border: 0;
 }
 
-#search::placeholder {
-    animation: typing 3s steps(20) infinite;
-}
 
-@keyframes typing {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
-}
+
 
 .form svg {
     color: #111;
@@ -127,21 +117,18 @@
 
 .btn_DH {
     background: #fff;
-    border: none;
+    border: striped 1px balck;
     padding: 10px 20px;
     display: inline-block;
     font-size: 15px;
     font-weight: 600;
-    width: 120px;
+    width: 150px;
     text-transform: uppercase;
     cursor: pointer;
     transform: skew(-21deg);
 }
 
-span {
-    display: inline-block;
-    transform: skew(21deg);
-}
+
 
 .btn_DH::before {
     content: '';

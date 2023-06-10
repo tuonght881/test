@@ -246,7 +246,7 @@ public class AccountController {
 		
 		m.addAttribute("user", u);
 		
-		return "/home/profile";
+		return "/account/profile";
 	}
 	
 	// Send Email Contact

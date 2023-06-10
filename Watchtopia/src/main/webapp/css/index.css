@@ -369,7 +369,7 @@ a:hover {
     cursor: pointer;
 }
 
-.input:focus,
+.input:hover,
 .input:not(:invalid) {
     width: 200px;
     cursor: text;

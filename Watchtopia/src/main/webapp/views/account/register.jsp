@@ -18,16 +18,12 @@
 <body>
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		<div class="container-fluid">
-			<a class="navbar-brand text-uppercase" href="#" style="color: red; font-size: 30px;">
-				<img src="/icon/smartwatch-app.png" alt="Logo" width="50"
-				height="44" class="d-inline-block align-text-top"> Watchtopia Shop
-			</a>
-
 			<div class="collapse navbar-collapse" id="navbarText">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="#"
-						style="font-size: 20px; font-weight: 400;">Đăng Ký</a></li>
+					<a class="navbar-brand" href="/home/watch"
+						style="margin-left: 15px;"> <span class="text-uppercase">
+							Watchtopia Shop </span>
+					</a>
 				</ul>
 				<span class="navbar-text"> <a href="#"
 					style="text-decoration: none; color: red;">Cần giúp đỡ?</a>
@@ -78,7 +74,7 @@
 				<span>Hoặc</span>
 				<hr class="line">
 			</div>
-			<button title="Sign In" type="submit" class="sign-in_ggl">
+<%-- 			<button title="Sign In" type="submit" class="sign-in_ggl">
 				<svg height="18" width="18" viewBox="0 0 32 32"
 					xmlns:xlink="http://www.w3.org/1999/xlink"
 					xmlns="http://www.w3.org/2000/svg">
@@ -111,7 +107,7 @@
 				<span><img
 					src="https://img.icons8.com/fluency/48/null/facebook-new.png"
 					style="width: 28px;" /> Đăng ký với Facebook</span>
-			</button>
+			</button> --%>
 			<p class="note">
 				Bạn đã có tài khoản? <a href="/account/login"
 					style="color: red; text-decoration: none;">Đăng Nhập</a>

@@ -38,10 +38,11 @@
 					<div class="col-12 col-sm-6 col-md-8" style="margin-top: -20px;">
 						<ul class="nav nav-top">
 							<li class="nav-item nav_item"><a
-								class="nav-link nav_link active" href="/login.html"
+								class="nav-link nav_link active" href="/account/login"
 								style="color: rgb(0, 0, 0);">Đăng nhập</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="/Register.html" style="color: rgb(0, 0, 0);">Đăng ký</a></li>
+								href="/account/register" style="color: rgb(0, 0, 0);">Đăng
+									ký</a></li>
 						</ul>
 					</div>
 					<div class="col-6 col-md-4" style="margin-top: -20px;">
@@ -60,7 +61,7 @@
 					</div>
 				</div>
 				<nav class="navbar navbar-expand-lg custom_nav-container ">
-					<a class="navbar-brand" href="index.html"
+					<a class="navbar-brand" href="/home/watch"
 						style="margin-left: 15px;"> <span class="text-uppercase">
 							Watchtopia Shop </span>
 					</a>
@@ -70,11 +71,9 @@
 						aria-label="Toggle navigation">
 						<span></span>
 					</button>
+					
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav">
-							<li class="nav-item active"><a class="nav-link"
-								href="index.html">Trang Chủ <span class="sr-only">(current)</span></a>
-							</li>
 							<li class="nav-item"><a class="nav-link" href="watches.html">
 									Đồng Hồ </a></li>
 							<li class="nav-item"><a class="nav-link" href="about.html">
@@ -94,7 +93,8 @@
 
 							<a href="/account/profileUser"> <i class="fa fa-user"
 								aria-hidden="true"></i>
-							</a> <a href=""> <i class="fa fa-cart-plus" aria-hidden="true"></i>
+							</a> <a href="/cart/view"> <i class="fa fa-cart-plus"
+								aria-hidden="true"></i>
 							</a>
 						</div>
 					</div>
@@ -107,8 +107,6 @@
 			<div class="row">
 				<div class="col-sm-1 icon_header">
 					<i class="fa-brands fa-facebook-f"></i> <i
-						class="fa-brands fa-tiktok"></i> <i
-						class="fa-brands fa-linkedin-in"></i> <i
 						class="fa-brands fa-instagram"></i>
 				</div>
 				<div class="col-sm-11">
@@ -419,7 +417,7 @@
 			<a id="prime" class="fab"><i
 				class="prime zmdi zmdi-comment-outline" style="color: #ffff;"></i></a>
 		</div>
-		<!-- foofter -->
+		<!-- footer -->
 		<footer class="footer_section">
 			<div class="container">
 				<div class="row">
@@ -430,8 +428,8 @@
 								đồng hồ nam - nữ thời trang phù hợp cho tất cả các lứa tuổi</p>
 							<div class="footer_social">
 								<a href=""> <i class="fa-brands fa-facebook"></i>
-								</a> <a href=""> <i class="fa-brands fa-linkedin-in"></i>
-								</a> <a href=""> <i class="fa-brands fa-tiktok"></i>
+<!-- 								</a> <a href=""> <i class="fa-brands fa-linkedin-in"></i>
+								</a> <a href=""> <i class="fa-brands fa-tiktok"></i> -->
 								</a> <a href=""> <i class="fa-brands fa-instagram"></i>
 								</a>
 							</div>
@@ -444,9 +442,17 @@
 								<a href=""> <i class="fa fa-map-marker" aria-hidden="true"></i>
 									<span> Khóm 6A, Trần Văn Thời, Cà Mau, Việt Nam </span>
 								</a> <a href=""> <i class="fa fa-phone" aria-hidden="true"></i>
-									<span> 083 856 5542 </span>
+									<span> 012 345 678 </span>
 								</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
-									<span> tungtqpc04315@fpt.edu.vn </span>
+									<span> tungtqpc04315@fpt.edu.vn </span></a>
+									</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
+									<span> thiendtpc@fpt.edu.vn </span></a>
+									</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
+									<span> tuonghtpc04356.edu.vn </span></a>
+									</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
+									<span> haoncpc04337@fpt.edu.vn </span></a>
+									</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
+									<span> phatdlgpc@fpt.edu.vn </span>
 								</a>
 							</div>
 						</div>
@@ -477,8 +483,6 @@
 				<div class="footer-info">
 					<p>
 						&copy; <span id="displayYear"></span> FPT POLYTECHNIC CAN THO 2023
-						<a href="https://www.facebook.com/profile.php?id=100070215626147">-
-							TO QUOC TUNG PC04315</a>
 					</p>
 				</div>
 			</div>

@@ -22,43 +22,16 @@
 <body>
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#" style="color: red; font-size: 30px;">
-				<img src="/icon/smartwatch-app.png" alt="Logo" width="50"
-				height="44" class="d-inline-block align-text-top"> Lucas Shop
-			</a>
-
 			<div class="collapse navbar-collapse" id="navbarText">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="#"
-						style="font-size: 20px; font-weight: 400;">| Giỏ Hàng</a></li>
+					<a class="navbar-brand" href="/home/watch"
+						style="margin-left: 15px;"> <span class="text-uppercase">
+							Watchtopia Shop </span>
+					</a>
 				</ul>
-				<form class="form">
-					<label for="search"> <input required="" autocomplete="off"
-						placeholder="Đồng hồ nam -50%" id="search" type="text">
-						<div class="icon">
-							<svg stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"
-								fill="none" xmlns="http://www.w3.org/2000/svg" class="swap-on">
-                                <path
-									d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-									stroke-linejoin="round" stroke-linecap="round"></path>
-                            </svg>
-							<svg stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"
-								fill="none" xmlns="http://www.w3.org/2000/svg" class="swap-off">
-                                <path d="M10 19l-7-7m0 0l7-7m-7 7h18"
-									stroke-linejoin="round" stroke-linecap="round"></path>
-                            </svg>
-						</div>
-						<button type="reset" class="close-btn">
-							<svg viewBox="0 0 20 20" class="h-5 w-5"
-								xmlns="http://www.w3.org/2000/svg">
-                                <path clip-rule="evenodd"
-									d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-									fill-rule="evenodd"></path>
-                            </svg>
-						</button>
-					</label>
-				</form>
+				<span class="navbar-text"> <a href="#"
+					style="text-decoration: none; color: red;">Cần giúp đỡ?</a>
+				</span>
 			</div>
 		</div>
 	</nav>
@@ -78,6 +51,7 @@
 										<th scope="col">Đơn Giá</th>
 										<th scope="col">Số Lượng</th>
 										<th scope="col">Thành Tiền</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -95,7 +69,7 @@
 											</th>
 											<td class="align-middle">
 												<p class="mb-0" style="font-weight: 500;">
-													<strike>300.000 VNĐ</strike>${item.product_price}</p>
+													${item.product_price}</p>
 											</td>
 											<td class="align-middle">
 												<div class="d-flex flex-row">
@@ -117,6 +91,7 @@
 											<td class="align-middle">
 												<p class="mb-0" style="font-weight: 500;">${item.product_price}</p>
 											</td>
+											<td class="align-middle"><a href="/cart/remove/${item.product_id}">Xoá</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -131,18 +106,16 @@
 									<div class="col-md-9 col-lg-4 col-xl-9">
 										<div class="row">
 											<div class="col-12 col-xl-12">
-												<div class="form-outline mb-4 mb-xl-5">		
-												<label class="form-label"
-														for="typeName">Địa chỉ</label>							
-														<textarea rows="" cols="" id="typeName"
-														class="form-control form-control-lg"></textarea> 														
+												<div class="form-outline mb-4 mb-xl-5">
+													<label class="form-label" for="typeName">Địa chỉ</label>
+													<textarea rows="" cols="" id="typeName"
+														class="form-control form-control-lg"></textarea>
 												</div>
 												<div class="form-outline mb-4 mb-xl-5">
-												<label
-														class="form-label" for="typeExp">Ngày đặt hàng</label>
-													<input type="date" id="typeExp"
+													<label class="form-label" for="typeExp">Ngày đặt
+														hàng</label> <input type="date" id="typeExp"
 														class="form-control form-control-lg" placeholder="MM/YY"
-														size="7" id="exp" minlength="7" maxlength="7" /> 
+														size="7" id="exp" minlength="7" maxlength="7" />
 												</div>
 											</div>
 										</div>
@@ -221,13 +194,7 @@
 					<h6 class="text-uppercase font-weight-bold mb-4">Thanh Toán</h6>
 					<ul class="list-unstyled mb-0">
 						<li class="mb-2"><a href="#" class="text-muted"><i
-								style="font-size: 44px;" class="fa-brands fa-cc-visa"></i></a></li>
-						<li class="mb-2"><a href="#" class="text-muted"><i
-								style="font-size: 44px;" class="fa-brands fa-cc-paypal"></i></a></li>
-						<li class="mb-2"><a href="#" class="text-muted"><i
-								style="font-size: 44px;" class="fa-brands fa-cc-jcb"></i></a></li>
-						<li class="mb-2"><a href="#" class="text-muted"><i
-								style="font-size: 44px;" class="fa-brands fa-cc-amex"></i></a></li>
+								style="font-size: 44px;" class="fa-solid fa-truck"></i></a></li>
 					</ul>
 				</div>
 				<div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
@@ -258,19 +225,11 @@
 						CHÚNG TÔI TRÊN</h6>
 					<ul class="list-inline mt-4">
 						<li class="list-inline-item"><a href="#" class="text-muted"
-							target="_blank" title="twitter"><i
-								class="fab  fa-2x fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="#" class="text-muted"
 							target="_blank" title="facebook"><i
 								class="fab fa-2x fa-facebook-f"></i></a></li>
 						<li class="list-inline-item"><a href="#" class="text-muted"
 							target="_blank" title="instagram"><i
 								class="fab fa-2x fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="#" class="text-muted"
-							target="_blank" title="pinterest"><i
-								class="fab fa-2x fa-youtube"></i></a></li>
-						<li class="list-inline-item"><a href="#" class="text-muted"
-							target="_blank" title="vimeo"><i class="fab fa-2x fa-google"></i></a></li>
 					</ul>
 				</div>
 			</div>
@@ -280,9 +239,7 @@
 
 		<div class="bg-light py-2">
 			<div class="container text-center">
-				&copy; <span id="displayYear"></span> FPT POLYTECHNIC CAN THO 2023 <a
-					href="https://www.facebook.com/profile.php?id=100070215626147"
-					class="text-muted">- TO QUOC TUNG PC04315</a>
+				&copy; <span id="displayYear"></span> FPT POLYTECHNIC CAN THO 2023
 			</div>
 		</div>
 
