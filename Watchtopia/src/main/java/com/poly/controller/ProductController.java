@@ -6,14 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 
 import com.poly.DAO.BranchDAO;
 import com.poly.DAO.ProductDAO;
 import com.poly.DAO.ProductTypeDAO;
 import com.poly.entity.Branch;
+
 import com.poly.entity.ProductType;
 import com.poly.entity.Products;
 import com.poly.service.ParamService;
@@ -74,14 +76,50 @@ public class ProductController {
 		
 		List<Products> p = dao.findAll();
 		
+		List<Branch> branchs = branchDAO.findAll();
+		List<ProductType> types = typeDAO.findAll();
+		
+		m.addAttribute("typesList", types);
+		m.addAttribute("branchsList", branchs);
+		
 		m.addAttribute("products", p);
 		return "/admin/UpdateProduct";
 		///
 	}
 	
+	@RequestMapping("/product/edit/{id}")
+	public String edit(Model m, @PathVariable("id") Integer id) {
+		Products item = dao.findById(id).get();
+		m.addAttribute("item", item);
+		List<Products> items = dao.findAll();
+		
+		List<Branch> branchs = branchDAO.findAll();
+		List<ProductType> types = typeDAO.findAll();
+		
+		m.addAttribute("typesList", types);
+		m.addAttribute("branchsList", branchs);
+		
+		
+//		Branch branchs = branchDAO.findById(item.getBranch().getBrands_id()).get();
+//		ProductType types = typeDAO.findById(item.getType().getTypes_id()).get();
+//		
+//		m.addAttribute("types", types);
+//		m.addAttribute("branchs", branchs);
+		m.addAttribute("products", items);
+		return "/admin/UpdateProduct";
+	}
 	
+	@RequestMapping("/product/update")
+	public String update(Products item) {
+		dao.save(item);
+		return "redirect:/product/edit/" + item.getProduct_id();
+	}
 	
-	
+	@RequestMapping("/product/delete/{id}")
+	public String delete(@PathVariable("id") Integer id) {
+		dao.deleteById(id);
+		return "redirect:/product/UpdateProduct";
+	}
 	
 	// Đầu Cập nhật sản phẩm
 }

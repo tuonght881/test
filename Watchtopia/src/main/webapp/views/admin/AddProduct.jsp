@@ -200,8 +200,7 @@
 											<div class="col-md-8 col-lg-9">
 												<img src="" alt="" id="imgProduct" style="width: 10%;">
 												<div class="pt-2">
-													<div class="input-group mb-3">
-														<input type="text" name="product_img" id="Filename" hidden>
+													<input type="text" name="product_img" id="Filename" hidden>
 														<input type="file" class="fileform" id="formFile"
 															style="display: none;"> <label for="formFile"
 															id="customFile" onclick="defautlBtnIMG()"
@@ -209,7 +208,6 @@
 															class="fa-solid fa-upload"></i></label> <label id="deleteFile"
 															class="btn btn-danger btn-sm"><i
 															class="fa-solid fa-trash-can"></i></label>
-													</div>
 												</div>
 											</div>
 										</div>
