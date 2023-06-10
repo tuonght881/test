@@ -52,7 +52,7 @@ public class AccountController {
 		return "/account/login";
 	}
 	// phương thức post 
-	// commit được đi mà khuya roofi
+	// commit được đi mà khuya roofi main moi
 	@PostMapping("/account/login")
 	public String postLogin(Model m, Logs log) {
 		 
