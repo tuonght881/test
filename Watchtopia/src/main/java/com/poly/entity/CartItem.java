@@ -1,35 +1,29 @@
 package com.poly.entity;
 
-import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-
-@Entity
-@Table(name = "cart")
-public class CartItem implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-//	private Users users_id;
-//	private Products product_id;
-	
+public class CartItem {
+//	private Integer id;
+//	private String name;
+//	private double price;
+//	private int qty = 1;
+//	
+//	public CartItem(CartItem item) {
+//		this.id = item.getId();
+//		this.name = item.getName();
+//		this.price = item.getPrice();
+//		this.qty = 1;
+//	}
 	@Id
 	@JsonIgnore
 	@ManyToOne
@@ -40,4 +34,10 @@ public class CartItem implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "product_id")
 	Products product;
+
+	public CartItem(CartItem item) {
+		super();
+		this.users = item.getUsers();
+		this.product = item.getProduct();
+	}
 }

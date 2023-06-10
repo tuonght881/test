@@ -171,7 +171,7 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="box">
-							<a href="${item.product_id}">
+							<a href="/home/detailWatched/${item.product_id}">
 								<div class="img-box">
 									<img src="/img/${item.product_img}" alt="">
 								</div>
