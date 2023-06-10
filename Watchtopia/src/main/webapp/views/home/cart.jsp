@@ -128,77 +128,21 @@
 							<div class="card-body p-4">
 
 								<div class="row">
-									<div class="col-md-6 col-lg-4 col-xl-3 mb-4 mb-md-0">
-										<form>
-											<div class="d-flex flex-row pb-3">
-												<div class="d-flex align-items-center pe-2">
-													<input class="form-check-input" type="radio"
-														name="radioNoLabel" id="radioNoLabel1v" value=""
-														aria-label="..." checked />
-												</div>
-												<div class="rounded border w-100 p-3">
-													<p class="d-flex align-items-center mb-0">
-														<i class="fab fa-cc-mastercard fa-2x text-dark pe-2"></i>Thẻ
-														tín dụng
-													</p>
-												</div>
-											</div>
-											<div class="d-flex flex-row pb-3">
-												<div class="d-flex align-items-center pe-2">
-													<input class="form-check-input" type="radio"
-														name="radioNoLabel" id="radioNoLabel2v" value=""
-														aria-label="..." />
-												</div>
-												<div class="rounded border w-100 p-3">
-													<p class="d-flex align-items-center mb-0">
-														<i class="fab fa-cc-visa fa-2x fa-lg text-dark pe-2"></i>Thẻ
-														ghi nợ
-													</p>
-												</div>
-											</div>
-											<div class="d-flex flex-row">
-												<div class="d-flex align-items-center pe-2">
-													<input class="form-check-input" type="radio"
-														name="radioNoLabel" id="radioNoLabel3v" value=""
-														aria-label="..." />
-												</div>
-												<div class="rounded border w-100 p-3">
-													<p class="d-flex align-items-center mb-0">
-														<i class="fab fa-cc-paypal fa-2x fa-lg text-dark pe-2"></i>PayPal
-													</p>
-												</div>
-											</div>
-										</form>
-									</div>
-									<div class="col-md-6 col-lg-4 col-xl-6">
+									<div class="col-md-9 col-lg-4 col-xl-9">
 										<div class="row">
-											<div class="col-12 col-xl-6">
-												<div class="form-outline mb-4 mb-xl-5">
-													<input type="text" id="typeName"
-														class="form-control form-control-lg" siez="17"
-														placeholder="John Smith" /> <label class="form-label"
-														for="typeName">Tên trên thẻ</label>
+											<div class="col-12 col-xl-12">
+												<div class="form-outline mb-4 mb-xl-5">		
+												<label class="form-label"
+														for="typeName">Địa chỉ</label>							
+														<textarea rows="" cols="" id="typeName"
+														class="form-control form-control-lg"></textarea> 														
 												</div>
 												<div class="form-outline mb-4 mb-xl-5">
-													<input type="text" id="typeExp"
+												<label
+														class="form-label" for="typeExp">Ngày đặt hàng</label>
+													<input type="date" id="typeExp"
 														class="form-control form-control-lg" placeholder="MM/YY"
-														size="7" id="exp" minlength="7" maxlength="7" /> <label
-														class="form-label" for="typeExp">Hết Hạn</label>
-												</div>
-											</div>
-											<div class="col-12 col-xl-6">
-												<div class="form-outline mb-4 mb-xl-5">
-													<input type="text" id="typeText"
-														class="form-control form-control-lg" siez="17"
-														placeholder="1111 2222 3333 4444" minlength="19"
-														maxlength="19" /> <label class="form-label"
-														for="typeText">Số thẻ</label>
-												</div>
-												<div class="form-outline mb-4 mb-xl-5">
-													<input type="password" id="typeText"
-														class="form-control form-control-lg"
-														placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3"
-														maxlength="3" /> <label class="form-label" for="typeText">Cvv</label>
+														size="7" id="exp" minlength="7" maxlength="7" /> 
 												</div>
 											</div>
 										</div>
