@@ -226,13 +226,13 @@
                             </ul>
                             <div class="tab-content pt-2">
                                 <div class="tab-pane fade show active pt-3" id="addProduct">
-                                    <form action="/product/UpdateProduct" method="get">
+                                    <form:form action="/product/UpdateProduct" modelAttribute="item">
                                         <div class="row mb-3">
                                             <label for="" class="col-md-4 col-lg-3 col-form-label">Hình ảnh</label>
                                             <div class="col-md-8 col-lg-9">
                                                 <img src="/img/${item.product_img}" alt="" style="width: 10%;">
                                                 <div class="pt-2">
-                                                   <input type="text" name="product_img" id="Filename" hidden>
+                                                   <form:input type="text" path="product_img" name="product_img" id="Filename" />
 														<input type="file" class="fileform" id="formFile"
 															style="display: none;"> <label for="formFile"
 															id="customFile" onclick="defautlBtnIMG()"
@@ -249,8 +249,8 @@
 												class="col-md-4 col-lg-3 col-form-label">Tên Sản
 												Phẩm</label>
 											<div class="col-md-8 col-lg-9">
-												<input name="product_name" value="${item.product_name}" type="text" class="form-control"
-													id="fullName" placeholder="Tên sản phẩm">
+												<form:input path="product_name" name="product_name" value="${item.product_name}" type="text" class="form-control"
+													id="fullName" placeholder="Tên sản phẩm"/>
 											</div>
 										</div>
 
@@ -258,7 +258,7 @@
 											<label for="about" class="col-md-4 col-lg-3 col-form-label">Mô
 												tả</label>
 											<div class="col-md-8 col-lg-9">
-												<input name="product_describe" value="${item.product_describe}" class="form-control" type="text"
+												<form:input path="product_describe" name="product_describe" value="${item.product_describe}" class="form-control" type="text"
 													id="about" style="height: 100px"/>
                                                 
                                                
@@ -305,7 +305,7 @@
                                             </div>
 
                                         </div>
-                                    </form>
+                                    </form:form>
                                 </div>
                             </div>
                         </div>
