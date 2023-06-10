@@ -116,7 +116,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/product/delete/{id}")
-	public String create(@PathVariable("id") Integer id) {
+	public String delete(@PathVariable("id") Integer id) {
 		dao.deleteById(id);
 		return "redirect:/product/UpdateProduct";
 	}
