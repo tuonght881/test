@@ -91,7 +91,7 @@ public class AccountController {
 		}
 
 	}
-	//Tesst22
+	//Tesst2222
 	// Đăng Ký
 	@GetMapping("/account/register")
 	public String getRegister() {
