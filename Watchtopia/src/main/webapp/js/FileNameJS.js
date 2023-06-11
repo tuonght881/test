@@ -3,4 +3,8 @@ $(function() {
 		var x = event.target.files[0].name
 		$("#Filename").val(x)
 	});
+	
+	$("#deleteFile").click(function(){
+		$("#Filename").val("")
+	});
 })
