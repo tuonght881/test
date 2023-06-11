@@ -91,7 +91,7 @@
 								</div>
 							</div>
 
-							<a href="/account/profileUser"> <i class="fa fa-user"
+							<a href="/home/profile"> <i class="fa fa-user"
 								aria-hidden="true"></i>
 							</a> <a href="/cart/view"> <i class="fa fa-cart-plus"
 								aria-hidden="true"></i>

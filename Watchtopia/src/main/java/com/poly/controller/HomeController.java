@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.poly.DAO.ProductDAO;
 import com.poly.entity.Products;
 import com.poly.entity.Users;
+import com.poly.service.CookieService;
 import com.poly.service.SessionService;
 
 @Controller
@@ -20,6 +21,9 @@ public class HomeController {
 	
 	@Autowired
 	SessionService ssSer;
+	
+	@Autowired
+	CookieService cook;
 	
 	
 	@GetMapping("/home/watch")
@@ -40,9 +44,9 @@ public class HomeController {
 		return "/home/detailWatched";
 	}
 	
-	@GetMapping("/account/profile")
+	@GetMapping("/home/profile")
 	public String getProfile(Model m) {
-		Users u = ssSer.getAttribute("username");
+		String u = cook.getValue("email");
 		if(u == null) {
 			m.addAttribute("userNull", true);
 			Products p = dao.findByKeywordsBySQL();
@@ -51,7 +55,7 @@ public class HomeController {
 			m.addAttribute("items", items);
 			return "/home/index";
 		}else {
-			return "redirect:/product/addproduct";
+			return "redirect:/account/profileUser";
 		}
 		
 	}

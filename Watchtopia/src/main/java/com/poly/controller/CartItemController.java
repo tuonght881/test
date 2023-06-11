@@ -27,6 +27,9 @@ public class CartItemController {
 	
 	@Autowired
 	SessionService ss;
+	
+	@Autowired
+	CartItemDAO cartDao;
 
 	@RequestMapping("/cart/view")
 	public String view(Model m) {
@@ -54,7 +57,16 @@ public class CartItemController {
 
 	@RequestMapping("/cart/remove/{id}")
 	public String remove(@PathVariable("id") Integer id) {
-		cart.remove(id);
+		
+		Users u = ss.getAttribute("username");
+		
+		List<CartItem> list = cartDao.findAllBySQL(id, u.getUsers_id());
+		
+		for(int i = 0; i < list.size(); i++) {
+
+			cartDao.deleteById(list.get(i).getCart_id());
+		}
+		
 		return "redirect:/cart/view";
 	}
 
@@ -71,5 +83,10 @@ public class CartItemController {
 	}
 	
 	//Đặt hàng
+	@PostMapping("/cart/total")
+	public String cart() {
+		return "";
+	}
+	
 	
 }
