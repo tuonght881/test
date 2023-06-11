@@ -102,7 +102,7 @@
 
 	<aside id="sidebar" class="sidebar">
 		<ul class="sidebar-nav" id="sidebar-nav">
-			<li class="nav-item"><a class="nav-link " href=""> <i
+			<li class="nav-item"><a class="nav-link " href="/admin/thongke"> <i
 					class="fa-regular fa-clipboard"></i> <span>Thống Kê</span>
 			</a></li>
 			<li class="nav-item"><a class="nav-link active collapsed"
