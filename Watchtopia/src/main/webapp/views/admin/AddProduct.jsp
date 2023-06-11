@@ -29,8 +29,7 @@
 <body>
 	<header id="header" class="header fixed-top d-flex align-items-center">
 		<div class="d-flex align-items-center justify-content-between">
-			<a href="/home/watch" class="logo d-flex align-items-center"> <img
-				src="/icon/smartwatch-app.png" alt=""> <span
+			<a href="/home/watch" class="logo d-flex align-items-center">  <span
 				class="d-none d-lg-block text-uppercase">Watchtopia</span>
 			</a> <i class="fa-solid fa-bars-staggered toggle-sidebar-btn"
 				style="font-size: 25px;"></i>
@@ -68,7 +67,7 @@
 						</li>
 
 						<li><a class="dropdown-item d-flex align-items-center"
-							href=""> <i class="fa-solid fa-circle-user"></i> <span>Trang
+							href="/account/profileUser"> <i class="fa-solid fa-circle-user"></i> <span>Trang
 									Cá Nhân</span>
 						</a></li>
 						<li>
@@ -159,7 +158,7 @@
 			<hr>
 
 			<li class="nav-item"><a class="nav-link collapsed"
-				href="profile.html"> <i class="fa-solid fa-circle-user"></i> <span>Trang
+				href="/account/profileUser"> <i class="fa-solid fa-circle-user"></i> <span>Trang
 						Cá Nhân</span>
 			</a></li>
 		</ul>

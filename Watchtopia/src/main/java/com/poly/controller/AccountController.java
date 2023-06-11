@@ -52,7 +52,6 @@ public class AccountController {
 		return "/account/login";
 	}
 	// phương thức post 
-	// commit được đi mà khuya roofi main moi
 	@PostMapping("/accountpost/login")
 	public String postLogin(Model m, Logs log) {
 		 
@@ -185,40 +184,98 @@ public class AccountController {
 	}
 	
 	// Đổi mật khẩu mới
-	
-	@PostMapping("/account/changePassword")
-	public String changePassword(Model m, Users user) {
+	@PostMapping("/account/changepasspro")
+	public String changepasspro(Model m, Users user) {
 		
-		String pass = paramSer.getString("passwords", "");
-		String pass2 = paramSer.getString("passwordsTwo", "");
+		String op = paramSer.getString("pass", "");
+		String npa = paramSer.getString("np", "");
+		String npa2 = paramSer.getString("np2", "");
 		Users u = ssSer.getAttribute("user");
+		Users usql = dao.findByUsersEmailObject(u.getEmail());
 		
-		if(pass2.equalsIgnoreCase(pass)) {
-			user.setUsers_id(u.getUsers_id());
-			user.setActive(u.isActive());
-			user.setBlocked(u.isBlocked());
-			user.setCreatedate(u.getCreatedate());
-			user.setEmail(u.getEmail());
-			user.setFailed_login_attempts(u.getFailed_login_attempts());
-			user.setFullname(u.getFullname());
-			user.setPasswords(pass2);
-			user.setPhone(u.getPhone());
-			user.setRoles(u.isRoles());
+		
+		if(op.equalsIgnoreCase(u.getPasswords())&&npa2.equalsIgnoreCase(npa)) {
+			user.setUsers_id(usql.getUsers_id());
+			user.setActive(usql.isActive());
+			user.setBlocked(usql.isBlocked());
+			user.setCreatedate(usql.getCreatedate());
+			user.setEmail(usql.getEmail());
+			user.setFailed_login_attempts(usql.getFailed_login_attempts());
+			user.setFullname(usql.getFullname());
+			user.setPasswords(npa);
+			user.setPhone(usql.getPhone());
+			user.setRoles(usql.isRoles());
 			
 			dao.save(user);
-			m.addAttribute("succ", true);
-			
-			cookieSer.create("email", u.getEmail(), 10);
-			cookieSer.create("pass", pass, 10);
-			
+			m.addAttribute("succRP", true);		
 		}else {
-			m.addAttribute("errorNull", true);
-		}
-		
-		return "/account/changePassword";
+			m.addAttribute("errorNullRP", true);
+		}	
+		return "redirect:/account/profileUser";
 	}
+
+	
+	// Cập nhật thông tin
+	
+		@PostMapping("/account/updateinfo")
+		public String updateinfo(Model m, Users user) {
+			
+			String f = paramSer.getString("fullname", "");
+			String p = paramSer.getString("phone", "");
+			Users u = ssSer.getAttribute("user");
+			
+				user.setUsers_id(u.getUsers_id());
+				user.setActive(u.isActive());
+				user.setBlocked(u.isBlocked());
+				user.setCreatedate(u.getCreatedate());
+				user.setEmail(u.getEmail());
+				user.setFailed_login_attempts(u.getFailed_login_attempts());
+				user.setFullname(f);
+				user.setPasswords(u.getPasswords());
+				user.setPhone(p);
+				user.setRoles(u.isRoles());
+				
+				dao.save(user);
+				m.addAttribute("succ", true);
+				
+			
+			return "redirect:/account/profileUser";
+		}
 	
 	// Quên mật khẩu
+		
+		@PostMapping("/account/changePassword")
+		public String changePassword(Model m, Users user) {
+			
+			String pass = paramSer.getString("passwords", "");
+			String pass2 = paramSer.getString("passwordsTwo", "");
+			Users u = ssSer.getAttribute("user");
+			
+			if(pass2.equalsIgnoreCase(pass)) {
+				user.setUsers_id(u.getUsers_id());
+				user.setActive(u.isActive());
+				user.setBlocked(u.isBlocked());
+				user.setCreatedate(u.getCreatedate());
+				user.setEmail(u.getEmail());
+				user.setFailed_login_attempts(u.getFailed_login_attempts());
+				user.setFullname(u.getFullname());
+				user.setPasswords(pass2);
+				user.setPhone(u.getPhone());
+				user.setRoles(u.isRoles());
+				
+				dao.save(user);
+				m.addAttribute("succ", true);
+				
+				cookieSer.create("email", u.getEmail(), 10);
+				cookieSer.create("pass", pass, 10);
+				
+			}else {
+				m.addAttribute("errorNull", true);
+			}
+			
+			return "/account/changePassword";
+		}	
+		
 	@GetMapping("/account/forgetPassword")
 	public String index() {
 		return "/account/forgetPassword";
@@ -273,7 +330,6 @@ public class AccountController {
 		log.setLogin_out(new Date());
 		
 		logsDao.save(log);
-		
 		return "/account/login";
 	}
 	
@@ -283,7 +339,7 @@ public class AccountController {
 		
 		Users u = ssSer.getAttribute("username");
 		
-		m.addAttribute("user", u);
+		m.addAttribute("user", dao.findByUsersEmailObject(u.getEmail()));
 		
 		return "/account/profile";
 	}

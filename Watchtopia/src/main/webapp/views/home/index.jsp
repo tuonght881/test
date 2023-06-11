@@ -37,12 +37,14 @@
 				<div class="row no-gutters" style="height: 15px;">
 					<div class="col-12 col-sm-6 col-md-8" style="margin-top: -20px;">
 						<ul class="nav nav-top">
-							<li class="nav-item nav_item"><a
-								class="nav-link nav_link active" href="/account/login"
-								style="color: rgb(0, 0, 0);">Đăng nhập</a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="/account/register" style="color: rgb(0, 0, 0);">Đăng
-									ký</a></li>
+ 							<c:if test="${hidden ==false}">
+								<li class="nav-item nav_item"><a
+									class="nav-link nav_link active" href="/account/login"
+									style="color: rgb(0, 0, 0);">Đăng nhập</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/account/register" style="color: rgb(0, 0, 0);">Đăng
+										ký</a></li>
+							</c:if>
 						</ul>
 					</div>
 					<div class="col-6 col-md-4" style="margin-top: -20px;">
@@ -71,7 +73,7 @@
 						aria-label="Toggle navigation">
 						<span></span>
 					</button>
-					
+
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav">
 							<li class="nav-item"><a class="nav-link" href="watches.html">
@@ -337,7 +339,7 @@
 						<div class="card">
 							<div class="card-img"></div>
 							<div class="card-info">
-								<p class="text-body">Đóng gói tạm ổn, dây sao cu đẹp, mặt
+								<p class="text-body">Đóng gói tạm ổn, dây cao su đẹp, mặt
 									đồng hồ không trầy, chỉnh giờ và phút được. Mở bằng nút tròn,
 									chỉnh phút là nút tròn, chỉnh giờ là nút dài. Giá 15.000 vậy là
 									tốt rồi ạ.</p>
@@ -427,8 +429,7 @@
 							<p style="color: #ffff;">Lucas Shop chuyên bán những dòng
 								đồng hồ nam - nữ thời trang phù hợp cho tất cả các lứa tuổi</p>
 							<div class="footer_social">
-								<a href=""> <i class="fa-brands fa-facebook"></i>
-<!-- 								</a> <a href=""> <i class="fa-brands fa-linkedin-in"></i>
+								<a href=""> <i class="fa-brands fa-facebook"></i> <!-- 								</a> <a href=""> <i class="fa-brands fa-linkedin-in"></i>
 								</a> <a href=""> <i class="fa-brands fa-tiktok"></i> -->
 								</a> <a href=""> <i class="fa-brands fa-instagram"></i>
 								</a>
@@ -444,15 +445,15 @@
 								</a> <a href=""> <i class="fa fa-phone" aria-hidden="true"></i>
 									<span> 012 345 678 </span>
 								</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
-									<span> tungtqpc04315@fpt.edu.vn </span></a>
-									</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
-									<span> thiendtpc@fpt.edu.vn </span></a>
-									</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
-									<span> tuonghtpc04356.edu.vn </span></a>
-									</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
-									<span> haoncpc04337@fpt.edu.vn </span></a>
-									</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
-									<span> phatdlgpc@fpt.edu.vn </span>
+									<span> tungtqpc04315@fpt.edu.vn </span></a> </a> <a href=""> <i
+									class="fa fa-envelope" aria-hidden="true"></i> <span>
+										thiendtpc@fpt.edu.vn </span></a> </a> <a href=""> <i
+									class="fa fa-envelope" aria-hidden="true"></i> <span>
+										tuonghtpc04356.edu.vn </span></a> </a> <a href=""> <i
+									class="fa fa-envelope" aria-hidden="true"></i> <span>
+										haoncpc04337@fpt.edu.vn </span></a> </a> <a href=""> <i
+									class="fa fa-envelope" aria-hidden="true"></i> <span>
+										phatdlgpc@fpt.edu.vn </span>
 								</a>
 							</div>
 						</div>

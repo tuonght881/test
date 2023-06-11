@@ -17,6 +17,21 @@
 </head>
 <body>
 	<div class="cover">
+<!-- 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<a class="navbar-brand" href="/home/watch"
+						style="margin-left: 15px;"> <span class="text-uppercase">
+							Watchtopia Shop </span>
+					</a>
+				</ul>
+				<span class="navbar-text"> <a href="#"
+					style="text-decoration: none; color: red;">Cần giúp đỡ?</a>
+				</span>
+			</div>
+		</div>
+	</nav> -->
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="navbarText">
