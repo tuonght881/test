@@ -42,10 +42,10 @@ public class AccountController {
 	@GetMapping("/account/login")
 	public String getLogin(Model m) {
 
-		String user = cookieSer.getValue("user");
+		String user = cookieSer.getValue("email");
 		if (user != null) {
 			String pass = cookieSer.getValue("pass");
-			m.addAttribute("user", user);
+			m.addAttribute("email", user);
 			m.addAttribute("pass", pass);
 		}
 
@@ -53,7 +53,7 @@ public class AccountController {
 	}
 	// phương thức post 
 	// commit được đi mà khuya roofi main moi
-	@PostMapping("/account/login")
+	@PostMapping("/accountpost/login")
 	public String postLogin(Model m, Logs log) {
 		 
 		
@@ -69,10 +69,10 @@ public class AccountController {
 					ssSer.setAttribute("username", u);
 					
 					if (remember) {
-						cookieSer.create("user", username, 10);
+						cookieSer.create("email", username, 10);
 						cookieSer.create("pass", password, 10);
 					} else {
-						cookieSer.delete("user");
+						cookieSer.delete("email");
 						cookieSer.delete("pass");
 					}
 					
@@ -207,6 +207,10 @@ public class AccountController {
 			
 			dao.save(user);
 			m.addAttribute("succ", true);
+			
+			cookieSer.create("email", u.getEmail(), 10);
+			cookieSer.create("pass", pass, 10);
+			
 		}else {
 			m.addAttribute("errorNull", true);
 		}

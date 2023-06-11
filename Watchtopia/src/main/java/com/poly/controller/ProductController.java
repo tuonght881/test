@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,7 @@ import com.poly.entity.Branch;
 import com.poly.entity.ProductType;
 import com.poly.entity.Products;
 import com.poly.service.ParamService;
+import com.poly.service.SessionService;
 
 @Controller
 public class ProductController {
@@ -34,6 +37,9 @@ public class ProductController {
 	
 	@Autowired
 	ParamService param;
+	
+	@Autowired
+	SessionService ss;
 	
 	// Đầu Thêm sản phẩm
 	@GetMapping("/product/addproduct")
@@ -99,6 +105,8 @@ public class ProductController {
 		m.addAttribute("typesList", types);
 		m.addAttribute("branchsList", branchs);
 		
+		ss.setAttribute("id", item.getProduct_id());
+		
 		
 //		Branch branchs = branchDAO.findById(item.getBranch().getBrands_id()).get();
 //		ProductType types = typeDAO.findById(item.getType().getTypes_id()).get();
@@ -109,9 +117,20 @@ public class ProductController {
 		return "/admin/UpdateProduct";
 	}
 	
-	@RequestMapping("/product/update")
-	public String update(Products item) {
-		dao.save(item);
+	@PostMapping("/product/updateProduct")
+	public String update(Products item)  {
+		
+		int id = ss.getAttribute("id");
+		
+		Products find = dao.findById(id).get();
+		String img = param.getString("product_img", "");
+		
+		item.setProduct_id(find.getProduct_id());
+		item.setProduct_img(img);
+		item.setBranch(find.getBranch());
+		item.setType(find.getType());
+		
+		dao.saveAndFlush(item);
 		return "redirect:/product/edit/" + item.getProduct_id();
 	}
 	
