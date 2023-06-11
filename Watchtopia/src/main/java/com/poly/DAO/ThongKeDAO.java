@@ -8,15 +8,16 @@ import com.poly.entity.ThongKe;
 
 
 public interface ThongKeDAO  extends JpaRepository<ThongKe, String>{
-
 //	@Query("select p.product_name as'name', p.product_price as'price', sum(d.quantity) as'total_qty'\r\n"
 //			+ "from detail_orders d \r\n"
 //			+ "inner join product p on d.product_id = p.product_id \r\n"
 //			+ "group by p.product_name, p.product_price")
+	
+	@Query("select new ThongKe(p.product_name, p.product_price, sum(d.quantity)) from OrderDetail d inner join Products p on d.product.product_id = p.product_id group by p.product_name, p.product_price")
 	List<ThongKe> getListTK();
 	
-//	@Query("select from OrderDetail d inner join Product")
+	@Query("select count(o) from Order o")
+	Long getLuotMua();
 	
-//	@Query("SELECT new Report(o.category, sum(o.price), count(o)) " + " FROM Product o " + " GROUP BY o.category"
-//			+ " ORDER BY sum(o.price) DESC")
+	
 }

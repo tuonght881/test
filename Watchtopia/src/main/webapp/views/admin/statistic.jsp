@@ -202,7 +202,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title" style="color: blue; font-weight: 600;">1,500</h5>
+                                        <h5 class="card-title" style="color: blue; font-weight: 600;">999</h5>
                                         <p class="card-text" style="color: gray;">Lượt xem</p>
                                     </div>
                                 </div>
@@ -217,7 +217,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title" style="color: blue; font-weight: 600;">1,500</h5>
+                                        <h5 class="card-title" style="color: blue; font-weight: 600;">${luotMua }</h5>
                                         <p class="card-text" style="color: gray;">Lượt bán</p>
                                     </div>
                                 </div>
@@ -232,7 +232,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title" style="color: blue; font-weight: 600;">1,500</h5>
+                                        <h5 class="card-title" style="color: blue; font-weight: 600;">100</h5>
                                         <p class="card-text" style="color: gray;">Bình luận</p>
                                     </div>
                                 </div>
@@ -247,7 +247,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title" style="font-weight: 600;">$5,500</h5>
+                                        <h5 class="card-title" style="font-weight: 600;">${doanhThu }</h5>
                                         <p class="card-text">Doanh thu</p>
                                     </div>
                                 </div>
@@ -260,16 +260,16 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Total Quantity</th>
-                            <th scope="col">Total Price</th>
+                            <th scope="col">Tên sản phẩm</th>
+                            <th scope="col">Đơn giá</th>
+                            <th scope="col">Tổng số lượng</th>
+                            <th scope="col">Tổng tiền</th>
                         </tr>
                     </thead>
                     <tbody>
                     <c:forEach var="item" items="${listTK }" varStatus="loop">
                         <tr>
-                            <th scope="row">${loop.index }</th>
+                            <th scope="row">${loop.index+1 }</th>
                             <td>${item.name }</td>
                             <td>${item.price }</td>
                             <td>${item.total_qty }</td>

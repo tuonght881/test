@@ -14,5 +14,5 @@ public class ThongKe {
 	@Id
 	String name;
 	double price;
-	int total_qty;
+	Long total_qty;
 }
