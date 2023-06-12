@@ -66,6 +66,7 @@ public class AccountController {
 
 				if (u.isRoles() != true) {
 					ssSer.setAttribute("username", u);
+					cookieSer.create("checkEmail", username, 10);
 					
 					if (remember) {
 						cookieSer.create("email", username, 10);
@@ -84,6 +85,7 @@ public class AccountController {
 					logsDao.save(log);
 					return "redirect:/home/watch";
 				} else {
+					
 					ssSer.setAttribute("username", u);
 					if (remember) {
 						cookieSer.create("user", username, 10);
@@ -320,6 +322,7 @@ public class AccountController {
 		ssSer.setAttribute("username", "");
 		cookieSer.delete("user");
 		cookieSer.delete("pass");
+		cookieSer.delete("checkEmail");
 		
 		
 		Logs Lastlogin = logsDao.findByKeywordsBySQL();

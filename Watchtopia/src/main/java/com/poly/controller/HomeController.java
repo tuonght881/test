@@ -33,7 +33,7 @@ public class HomeController {
 	CookieService cook;
 	
 	
-
+	// có vấn đề để sau
 	@GetMapping("/home/watch")
 	public String getHome(Model m) {
 		Products p = dao.findByKeywordsBySQL();
@@ -68,12 +68,12 @@ public class HomeController {
 	
 	// xét điều kiện chưa đăng nhập chọn vào trang cá nhân
 	@GetMapping("/home/profile")
-
 	public String getProfile(Model m) {
-
-		String u = cook.getValue("email");
+		String u = cook.getValue("checkEmail");
+//		Users u = ssSer.getAttribute("username");
 		if(u == null) {
 			m.addAttribute("userNull", true);
+			m.addAttribute("hidden", false);
 			Products p = dao.findByKeywordsBySQL();
 			List<Products> items = dao.findByKeywordsAllBySQL();
 			m.addAttribute("item", p);

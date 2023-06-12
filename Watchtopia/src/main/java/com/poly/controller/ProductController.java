@@ -70,7 +70,7 @@ public class ProductController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return "/admin/AddProduct";
+		return "redirect:/product/addproduct";
 		
 	}
 	// Cuối Thêm sản phẩm
