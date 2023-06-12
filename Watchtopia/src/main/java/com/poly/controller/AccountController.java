@@ -61,11 +61,14 @@ public class AccountController {
 		boolean remember = paramSer.getBoolea("remember", false);
 
 		Users u = dao.findByUsersEmailObject(username);
+		
 		if (u != null) {
 			if (password.equalsIgnoreCase(u.getPasswords())) {
 
 				if (u.isRoles() != true) {
+					System.out.println("================>>>>"+u.getFullname());
 					ssSer.setAttribute("username", u);
+					cookieSer.create("checkEmail", username, 10);
 					
 					if (remember) {
 						cookieSer.create("email", username, 10);
@@ -84,6 +87,7 @@ public class AccountController {
 					logsDao.save(log);
 					return "redirect:/home/watch";
 				} else {
+					
 					ssSer.setAttribute("username", u);
 					if (remember) {
 						cookieSer.create("user", username, 10);
@@ -222,7 +226,7 @@ public class AccountController {
 			
 			String f = paramSer.getString("fullname", "");
 			String p = paramSer.getString("phone", "");
-			Users u = ssSer.getAttribute("user");
+			Users u = ssSer.getAttribute("username");
 			
 				user.setUsers_id(u.getUsers_id());
 				user.setActive(u.isActive());
@@ -320,6 +324,7 @@ public class AccountController {
 		ssSer.setAttribute("username", "");
 		cookieSer.delete("user");
 		cookieSer.delete("pass");
+		cookieSer.delete("checkEmail");
 		
 		
 		Logs Lastlogin = logsDao.findByKeywordsBySQL();

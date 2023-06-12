@@ -51,10 +51,13 @@ public class CartItem implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "product_id")
 	Products product;
+	
+	private int quantity = 1;
 
 	public CartItem(CartItem item) {
-		
+		this.cart_id = item.getCart_id();
 		this.users = item.getUsers();
 		this.product = item.getProduct();
+		this.quantity = 1;
 	}
 }

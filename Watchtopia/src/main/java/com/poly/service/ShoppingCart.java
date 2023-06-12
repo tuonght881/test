@@ -26,6 +26,7 @@ public class ShoppingCart implements ShoppingCartService{
 	
 	@Autowired
 	SessionService ss;
+	
 	@Autowired
 	CartItemDAO cart;
 	
@@ -45,19 +46,19 @@ public class ShoppingCart implements ShoppingCartService{
 	public void add(int id) {
 		Users u = ss.getAttribute("username");
 		Products p = repo.findById(id).get();
-//		if(p.isPresent()) {
-//			CartItem item = map.get(p.get().getProduct_id()); 
-//			if(item != null) {
-//				item.setQuatity(item.getQuatity() + 1);
-//			}
-//			else
-//				item = new CartItem(u , p.get());
+
+		CartItem cartFind = cart.findByObjectCartSQL(p.getProduct_id(), u.getUsers_id());
 		CartItem item = new CartItem();
-		item.setProduct(p);
-		item.setUsers(u);
-//			map.put(id, item);
-//		}
-		
+		if(cartFind == null) {
+			item.setProduct(p);
+			item.setUsers(u);
+			item.setQuantity(1);
+		}else {
+			item.setCart_id(cartFind.getCart_id());
+			item.setProduct(p);
+			item.setUsers(u);
+			item.setQuantity(cartFind.getQuantity() + 1);
+		}		
 		cart.save(item);
 	}
 

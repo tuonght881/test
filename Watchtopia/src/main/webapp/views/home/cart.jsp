@@ -77,11 +77,11 @@
 														onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
 														<i class="fa-solid fa-minus"></i>
 													</button>
-
-													<input id="form1" min="0" name="quantity" value="2"
+													
+													<input id="form1" min="1" name="quantitys" value=""
 														type="number" class="form-control form-control-sm"
 														style="width: 50px;" />
-
+													
 													<button class="btn btn-link px-2"
 														onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
 														<i class="fa-solid fa-plus"></i>
@@ -102,14 +102,14 @@
 						<div class="card shadow-2-strong mb-5 mb-lg-0"
 							style="border-radius: 16px;">
 							<div class="card-body p-4">
-								<form action="" method="post">
+								<form action="/cart/pay" method="post">
 									<div class="row">
 										<div class="col-md-9 col-lg-4 col-xl-9">
 											<div class="row">
 												<div class="col-12 col-xl-12">
 													<div class="form-outline mb-4 mb-xl-5">
 														<label class="form-label" for="typeName">Địa chỉ</label>
-														<textarea rows="" cols="" id="typeName"
+														<textarea rows="" cols="" id="typeName" name="address"
 															class="form-control form-control-lg"></textarea>
 													</div>
 													<div class="form-outline mb-4 mb-xl-5">
@@ -125,7 +125,7 @@
 											<div class="d-flex justify-content-between"
 												style="font-weight: 500;">
 												<p class="mb-2">Tổng tiền hàng</p>
-												<p class="mb-2">500.000 VNĐ</p>
+												<p class="mb-2">${sum} VNĐ</p>
 											</div>
 											<div class="d-flex justify-content-between"
 												style="font-weight: 500;">
@@ -136,7 +136,7 @@
 											<div class="d-flex justify-content-between mb-4"
 												style="font-weight: 500;">
 												<p class="mb-2">Tổng Thanh Toán</p>
-												<p class="mb-2" style="color: red;">500.000 VNĐ</p>
+												<p class="mb-2" style="color: red;">${sum} VNĐ</p>
 											</div>
 											<button class="btn_DH">
 												<span>Đặt Hàng</span>

@@ -63,8 +63,8 @@
 					<div class="collapse navbar-collapse" id="navbarText">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<a class="navbar-brand" href="/home/watch"
-								style="margin-left: 15px;"> <span class="text-uppercase">
-									Watchtopia Shop </span>
+								style="margin-left: 15px;"> <strong class="text-uppercase">
+									Watchtopia Shop </strong>
 							</a>
 						</ul>
 						<span class="navbar-text"> <a href="#"
