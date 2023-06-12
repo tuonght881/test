@@ -91,7 +91,8 @@
 											<td class="align-middle">
 												<p class="mb-0" style="font-weight: 500;">${item.product_price}</p>
 											</td>
-											<td class="align-middle"><a href="/cart/remove/${item.product_id}">Xoá</a></td>
+											<td class="align-middle"><a
+												href="/cart/remove/${item.product_id}">Xoá</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -101,47 +102,48 @@
 						<div class="card shadow-2-strong mb-5 mb-lg-0"
 							style="border-radius: 16px;">
 							<div class="card-body p-4">
-
-								<div class="row">
-									<div class="col-md-9 col-lg-4 col-xl-9">
-										<div class="row">
-											<div class="col-12 col-xl-12">
-												<div class="form-outline mb-4 mb-xl-5">
-													<label class="form-label" for="typeName">Địa chỉ</label>
-													<textarea rows="" cols="" id="typeName"
-														class="form-control form-control-lg"></textarea>
-												</div>
-												<div class="form-outline mb-4 mb-xl-5">
-													<label class="form-label" for="typeExp">Ngày đặt
-														hàng</label> <input type="date" id="typeExp"
-														class="form-control form-control-lg" placeholder="MM/YY"
-														size="7" id="exp" minlength="7" maxlength="7" />
+								<form action="" method="post">
+									<div class="row">
+										<div class="col-md-9 col-lg-4 col-xl-9">
+											<div class="row">
+												<div class="col-12 col-xl-12">
+													<div class="form-outline mb-4 mb-xl-5">
+														<label class="form-label" for="typeName">Địa chỉ</label>
+														<textarea rows="" cols="" id="typeName"
+															class="form-control form-control-lg"></textarea>
+													</div>
+													<div class="form-outline mb-4 mb-xl-5">
+														<label class="form-label" for="typeExp">Ngày đặt
+															hàng</label> <input type="date" id="typeExp"
+															class="form-control form-control-lg" placeholder="MM/YY"
+															size="7" id="exp" minlength="7" maxlength="7" />
+													</div>
 												</div>
 											</div>
 										</div>
+										<div class="col-lg-4 col-xl-3">
+											<div class="d-flex justify-content-between"
+												style="font-weight: 500;">
+												<p class="mb-2">Tổng tiền hàng</p>
+												<p class="mb-2">500.000 VNĐ</p>
+											</div>
+											<div class="d-flex justify-content-between"
+												style="font-weight: 500;">
+												<p class="mb-0">Phí vận chuyển</p>
+												<p class="mb-0">0 VNĐ</p>
+											</div>
+											<hr class="my-4">
+											<div class="d-flex justify-content-between mb-4"
+												style="font-weight: 500;">
+												<p class="mb-2">Tổng Thanh Toán</p>
+												<p class="mb-2" style="color: red;">500.000 VNĐ</p>
+											</div>
+											<button class="btn_DH">
+												<span>Đặt Hàng</span>
+											</button>
+										</div>
 									</div>
-									<div class="col-lg-4 col-xl-3">
-										<div class="d-flex justify-content-between"
-											style="font-weight: 500;">
-											<p class="mb-2">Tổng tiền hàng</p>
-											<p class="mb-2">500.000 VNĐ</p>
-										</div>
-										<div class="d-flex justify-content-between"
-											style="font-weight: 500;">
-											<p class="mb-0">Phí vận chuyển</p>
-											<p class="mb-0">0 VNĐ</p>
-										</div>
-										<hr class="my-4">
-										<div class="d-flex justify-content-between mb-4"
-											style="font-weight: 500;">
-											<p class="mb-2">Tổng Thanh Toán</p>
-											<p class="mb-2" style="color: red;">500.000 VNĐ</p>
-										</div>
-										<button class="btn_DH">
-											<span>Đặt Hàng</span>
-										</button>
-									</div>
-								</div>
+								</form>
 							</div>
 						</div>
 					</div>

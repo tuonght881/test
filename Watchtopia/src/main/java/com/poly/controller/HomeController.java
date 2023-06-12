@@ -29,12 +29,15 @@ public class HomeController {
 	UsersDAO udao;
 	
 	@Autowired
-	CookieService cookie;
+
+	CookieService cook;
+	
+	
 
 	@GetMapping("/home/watch")
 	public String getHome(Model m) {
 		Products p = dao.findByKeywordsBySQL();
-		String ucheck = cookie.getValue("email");
+		String ucheck = cook.getValue("email");
 		if(ucheck==null) {
 			m.addAttribute("hidden", false);
 			List<Products> items = dao.findByKeywordsAllBySQL();
@@ -62,17 +65,21 @@ public class HomeController {
 		return "/home/detailWatched";
 	}
 
-	@GetMapping("/account/profile")
+	
+	// xét điều kiện chưa đăng nhập chọn vào trang cá nhân
+	@GetMapping("/home/profile")
+
 	public String getProfile(Model m) {
-		Users u = ssSer.getAttribute("username");
-		if (u == null) {
+
+		String u = cook.getValue("email");
+		if(u == null) {
 			m.addAttribute("userNull", true);
 			Products p = dao.findByKeywordsBySQL();
 			List<Products> items = dao.findByKeywordsAllBySQL();
 			m.addAttribute("item", p);
 			m.addAttribute("items", items);
 			return "/home/index";
-		} else {
+		}else {
 			return "redirect:/account/profileUser";
 		}
 
