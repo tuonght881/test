@@ -44,6 +44,7 @@ public class HomeController {
 		return "/home/detailWatched";
 	}
 	
+	// xét điều kiện chưa đăng nhập chọn vào trang cá nhân
 	@GetMapping("/home/profile")
 	public String getProfile(Model m) {
 		String u = cook.getValue("email");
