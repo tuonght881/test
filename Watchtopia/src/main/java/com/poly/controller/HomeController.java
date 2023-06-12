@@ -31,8 +31,7 @@ public class HomeController {
 	@Autowired
 
 	CookieService cook;
-	
-	
+
 
 	@GetMapping("/home/watch")
 	public String getHome(Model m) {
