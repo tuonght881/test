@@ -34,47 +34,29 @@
 
 <body>
 	<div class="cover">
-		<header>
-		<div class="container-fluid">
-			<nav class="navbar navbar-expand-lg custom_nav-container ">
+				<header class="header_section">
+			<div class="container-fluid">
+				<nav class="navbar navbar-expand-lg custom_nav-container ">
 					<a class="navbar-brand" href="/home/watch"
-						style="margin-left: 15px; color:black; font-weight: bold; font-size: 14"> <span class="text-uppercase">
+						style="margin-left: 15px;"> <span class="text-uppercase">
 							Watchtopia Shop </span>
 					</a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse"
-						data-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent" aria-expanded="false"
-						aria-label="Toggle navigation">
-						<span></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav">
-							<li class="nav-item"><a class="nav-link" href="watches.html">
-									Đồng Hồ </a></li>
-							<li class="nav-item"><a class="nav-link" href="about.html">
-									Giới Thiệu </a></li>
-							<li class="nav-item"><a class="nav-link" href="contact.html">Liên
-									Hệ</a></li>
-						</ul>
-
-						<div class="user_option-box">
-							<div class="container">
-								<input placeholder="Nhập tên đồng hồ ..." required=""
-									class="input" name="text" type="text">
-								<div class="icon">
-									<i class="fa-brands fa-searchengin"></i>
-								</div>
-							</div>
-
-							<a href="/account/profileUser"> <i class="fa fa-user"
-								aria-hidden="true"></i>
-							</a> <a href="/cart/view"> <i class="fa fa-cart-plus"
-								aria-hidden="true"></i>
+						<div class="right-item d-flex ml-auto">					
+							<a href="/cart/view"> <i class="fa fa-cart-plus"
+									aria-hidden="true"></i>
 							</a>
+								<div class="dropdown">
+									<a type="button" class="dropbtn">
+										<i class="fa fa-user" aria-hidden="true"></i>
+									</a>
+									<div class="dropdown-content">
+										<a href="/home/profile">Account</a> <a href="#">Link 2</a> <a
+											href="#">Link 3</a>
+									</div>
+								</div>
 						</div>
-					</div>
 				</nav>
-		</div>
+			</div>
 		</header>
 
 
@@ -82,8 +64,7 @@
 		<section class="detail" style="margin-bottom: 10px">
 			<main>
 				<div class="col-sm-12">
-					<div class="card sm-12"
-						>
+					<div class="card sm-12">
 						<div class="row no-gutters">
 							<div class="col-md-4">
 								<div id="carouselExampleFade"
@@ -215,8 +196,8 @@
 													<line y2="12" y1="12" x2="19" x1="5"></line>
                                                 </svg>
 										</span>
-										</a>
-										<a href="/cart/buy/${p.product_id}" type="button" class="btn btn-danger">Mua Ngay</a>
+										</a> <a href="/cart/buy/${p.product_id}" type="button"
+											class="btn btn-danger">Mua Ngay</a>
 									</div>
 								</div>
 
@@ -531,7 +512,7 @@
 			</button>
 		</div>
 
-<footer class="footer_section">
+		<footer class="footer_section">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-lg-3 footer-col">
@@ -540,8 +521,7 @@
 							<p style="color: #ffff;">Lucas Shop chuyên bán những dòng
 								đồng hồ nam - nữ thời trang phù hợp cho tất cả các lứa tuổi</p>
 							<div class="footer_social">
-								<a href=""> <i class="fa-brands fa-facebook"></i>
-<!-- 								</a> <a href=""> <i class="fa-brands fa-linkedin-in"></i>
+								<a href=""> <i class="fa-brands fa-facebook"></i> <!-- 								</a> <a href=""> <i class="fa-brands fa-linkedin-in"></i>
 								</a> <a href=""> <i class="fa-brands fa-tiktok"></i> -->
 								</a> <a href=""> <i class="fa-brands fa-instagram"></i>
 								</a>
@@ -557,15 +537,15 @@
 								</a> <a href=""> <i class="fa fa-phone" aria-hidden="true"></i>
 									<span> 012 345 678 </span>
 								</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
-									<span> tungtqpc04315@fpt.edu.vn </span></a>
-									</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
-									<span> thiendtpc@fpt.edu.vn </span></a>
-									</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
-									<span> tuonghtpc04356.edu.vn </span></a>
-									</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
-									<span> haoncpc04337@fpt.edu.vn </span></a>
-									</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
-									<span> phatdlgpc@fpt.edu.vn </span>
+									<span> tungtqpc04315@fpt.edu.vn </span></a> </a> <a href=""> <i
+									class="fa fa-envelope" aria-hidden="true"></i> <span>
+										thiendtpc@fpt.edu.vn </span></a> </a> <a href=""> <i
+									class="fa fa-envelope" aria-hidden="true"></i> <span>
+										tuonghtpc04356.edu.vn </span></a> </a> <a href=""> <i
+									class="fa fa-envelope" aria-hidden="true"></i> <span>
+										haoncpc04337@fpt.edu.vn </span></a> </a> <a href=""> <i
+									class="fa fa-envelope" aria-hidden="true"></i> <span>
+										phatdlgpc@fpt.edu.vn </span>
 								</a>
 							</div>
 						</div>
