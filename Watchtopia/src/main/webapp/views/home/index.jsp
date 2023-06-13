@@ -37,7 +37,7 @@
 				<div class="row no-gutters" style="height: 15px;">
 					<div class="col-12 col-sm-6 col-md-8" style="margin-top: -20px;">
 						<ul class="nav nav-top">
- 							<c:if test="${hidden == false}">
+							<c:if test="${hidden ==false}">
 								<li class="nav-item nav_item"><a
 									class="nav-link nav_link active" href="/account/login"
 									style="color: rgb(0, 0, 0);">Đăng nhập</a></li>
@@ -67,39 +67,27 @@
 						style="margin-left: 15px;"> <span class="text-uppercase">
 							Watchtopia Shop </span>
 					</a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse"
-						data-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent" aria-expanded="false"
-						aria-label="Toggle navigation">
-						<span></span>
-					</button>
-
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav">
-							<li class="nav-item"><a class="nav-link" href="watches.html">
-									Đồng Hồ </a></li>
-							<li class="nav-item"><a class="nav-link" href="about.html">
-									Giới Thiệu </a></li>
-							<li class="nav-item"><a class="nav-link" href="contact.html">Liên
-									Hệ</a></li>
-						</ul>
-
-						<div class="user_option-box">
-							<div class="container">
+						<div class="right-item d-flex ml-auto">
+							<div class="find container">
 								<input placeholder="Nhập tên đồng hồ ..." required=""
-									class="input" name="search" type="text">
-								<a class="icon" href="/home/search">
+									class="input" name="text" type="text">
+								<div class="icon">
 									<i class="fa-brands fa-searchengin"></i>
-								</a>
-							</div>
-
-							<a href="/home/profile"> <i class="fa fa-user"
-								aria-hidden="true"></i>
-							</a> <a href="/cart/view"> <i class="fa fa-cart-plus"
-								aria-hidden="true"></i>
+								</div>
+							</div>						
+							<a href="/cart/view"> <i class="fa fa-cart-plus"
+									aria-hidden="true"></i>
 							</a>
+								<div class="dropdown">
+									<a type="button" class="dropbtn">
+										<i class="fa fa-user" aria-hidden="true"></i>
+									</a>
+									<div class="dropdown-content">
+										<a href="/home/profile">Account</a> <a href="#">Link 2</a> <a
+											href="#">Link 3</a>
+									</div>
+								</div>
 						</div>
-					</div>
 				</nav>
 			</div>
 		</header>

@@ -140,7 +140,7 @@ public class CartItemController {
 		
 		List<CartItem> lisst = cartDao.findAllBySQL(u.getUsers_id());
 		// insert vo bang order detail
-		
+		//test222
 		for (int i = 0; i < lisst.size(); i++) {
 			Order orFind = orderDao.findTop1BySQL();
 			OrderDetail orderDetail = new OrderDetail();

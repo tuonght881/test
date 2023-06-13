@@ -47,9 +47,6 @@ body {
     text-align: center;
 }
 
-.user_option-box {
-    display: flex;
-}
 
 .user_option-box a {
     color: #000000;
@@ -347,13 +344,21 @@ a:hover {
 
 
 /* Nút Tìm Kiếm */
-
+/* .find.container{
+	background-color: white;
+  color: black;
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+} */
 .container {
     position: relative;
-    --size-button: 40px;
+    --size-button: 20px;
 }
 
 .input {
+	top:13px;
     padding-left: var(--size-button);
     /* padding: 30px; */
     height: var(--size-button);
@@ -382,16 +387,15 @@ a:hover {
 .input:not(:invalid)+.icon i {
     pointer-events: all;
     cursor: pointer;
-    color: #000;
+    /* color: #000; */
 }
 
 .container .icon {
     position: absolute;
     width: var(--size-button);
     height: var(--size-button);
-    top: 0;
-    left: 0;
-    padding: 10px;
+    top: 13px;
+    left: 2px;
     pointer-events: none;
 }
 
@@ -914,8 +918,44 @@ a:hover {
             --color: #e9bd0c;
             background-image: linear-gradient(to right, #e9bd0c55, #22242F 30%);
         }
+/* dropdown menu */
+.fa.fa-cart-plus{
+	  background-color: white;
+  color: black;
+  padding: 17px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.dropbtn {
+  background-color: white;
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
 
 
 
