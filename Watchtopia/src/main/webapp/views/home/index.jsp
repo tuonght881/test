@@ -67,27 +67,30 @@
 						style="margin-left: 15px;"> <span class="text-uppercase">
 							Watchtopia Shop </span>
 					</a>
-						<div class="right-item d-flex ml-auto">
-							<div class="find container">
-								<input placeholder="Nhập tên đồng hồ ..." required=""
-									class="input" name="text" type="text">
-								<div class="icon">
-									<i class="fa-brands fa-searchengin"></i>
-								</div>
-							</div>						
-							<a href="/cart/view"> <i class="fa fa-cart-plus"
-									aria-hidden="true"></i>
-							</a>
-								<div class="dropdown">
-									<a type="button" class="dropbtn">
-										<i class="fa fa-user" aria-hidden="true"></i>
-									</a>
-									<div class="dropdown-content">
-										<a href="/home/profile">Account</a> <a href="#">Link 2</a> <a
-											href="#">Link 3</a>
-									</div>
-								</div>
+					<div class="dropdown">
+						<a type="button" class="dropbtn"> <i class="fa fa-user"
+							aria-hidden="true"></i>
+						</a>
+						<div class="dropdown-content">
+							<a href="/home/profile">Account</a> <a href="/product/addproduct">Product
+								Manager</a>
+								<div class="dropdown-divider"></div>
+								<a href="/account/logout">Đăng xuất</a>
 						</div>
+						
+					</div>
+					<div class="right-item d-flex ml-auto">
+						<div class="find container">
+							<input placeholder="Nhập tên đồng hồ ..." required=""
+								class="input" name="text" type="text">
+							<div class="icon">
+								<i class="fa-brands fa-searchengin"></i>
+							</div>
+						</div>
+						<a href="/cart/view"> <i class="fa fa-cart-plus"
+							aria-hidden="true"></i>
+						</a>
+					</div>
 				</nav>
 			</div>
 		</header>
