@@ -51,35 +51,60 @@ public class CartItemController {
 	// init cart
 	@RequestMapping("/cart/view")
 	public String view(Model m) {
-		try {
-			double tongTien = 0;
-//			int soLuong = 0;
-			Users u = ss.getAttribute("username");
 
-			List<CartItem> item = cartDao.findAllBySQL(u.getUsers_id());
-			List<CartItem> cartQuantity = cartDao.findAllBySQL(u.getUsers_id());
-//			
-			for (int i = 0; i < item.size(); i++) {
-				tongTien += item.get(i).getProduct().getProduct_price() * item.get(i).getQuantity();
+		String ucheck = ss.getAttribute("usercheck");
+
+		if (ucheck == null) {
+			m.addAttribute("userNull", true);
+			m.addAttribute("hidden", false);
+			Products p = productDAO.findByKeywordsBySQL();
+			List<Products> items = productDAO.findByKeywordsAllBySQL();
+			m.addAttribute("item", p);
+			m.addAttribute("items", items);
+			return "/home/index";
+		} else {
+			try {
+				double tongTien = 0;
+				Users u = ss.getAttribute("username");
+
+				List<CartItem> item = cartDao.findAllBySQL(u.getUsers_id());
+				List<CartItem> cartQuantity = cartDao.findAllBySQL(u.getUsers_id());
+//				
+				for (int i = 0; i < item.size(); i++) {
+					tongTien += item.get(i).getProduct().getProduct_price() * item.get(i).getQuantity();
+				}
+
+				// m.addAttribute("soLuong", soLuong);
+
+				m.addAttribute("sum", tongTien);
+				m.addAttribute("cartQuantity", cartQuantity);
+				m.addAttribute("cart", item);
+
+			} catch (NumberFormatException e) {
+
 			}
 
-			// m.addAttribute("soLuong", soLuong);
-
-			m.addAttribute("sum", tongTien);
-			m.addAttribute("cartQuantity", cartQuantity);
-			m.addAttribute("cart", item);
-
-		} catch (NumberFormatException e) {
-			// TODO: handle exception
+			return "/home/cart";
 		}
 
-		return "/home/cart";
 	}
 
 	@RequestMapping("/cart/add/{id}")
-	public String add(@PathVariable("id") Integer id) {
+	public String add(@PathVariable("id") Integer id, Model m) {
 
-		cart.add(id);
+		String ucheck = ss.getAttribute("usercheck");
+
+		if (ucheck == null) {
+			m.addAttribute("userNull", true);
+			m.addAttribute("hidden", false);
+			Products p = productDAO.findByKeywordsBySQL();
+			List<Products> items = productDAO.findByKeywordsAllBySQL();
+			m.addAttribute("item", p);
+			m.addAttribute("items", items);
+			return "/home/index";
+		} else
+
+			cart.add(id);
 		return "redirect:/home/detailWatched/{id}";
 	}
 
@@ -105,8 +130,7 @@ public class CartItemController {
 	}
 
 	@RequestMapping("/cart/update")
-	public String update(@RequestParam("id") Integer id
-			,@RequestParam("action") String action) {
+	public String update(@RequestParam("id") Integer id, @RequestParam("action") String action) {
 		cart.update(id, action);
 		return "redirect:/cart/view";
 	}
@@ -136,11 +160,9 @@ public class CartItemController {
 
 		orderDao.save(orderAdd);
 
-		
-		
 		List<CartItem> lisst = cartDao.findAllBySQL(u.getUsers_id());
 		// insert vo bang order detail
-		//test222
+		// test222
 		for (int i = 0; i < lisst.size(); i++) {
 			Order orFind = orderDao.findTop1BySQL();
 			OrderDetail orderDetail = new OrderDetail();

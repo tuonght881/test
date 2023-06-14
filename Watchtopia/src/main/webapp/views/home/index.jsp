@@ -37,7 +37,7 @@
 				<div class="row no-gutters" style="height: 15px;">
 					<div class="col-12 col-sm-6 col-md-8" style="margin-top: -20px;">
 						<ul class="nav nav-top">
-							<c:if test="${hidden ==false}">
+							<c:if test="${hidden == false}">
 								<li class="nav-item nav_item"><a
 									class="nav-link nav_link active" href="/account/login"
 									style="color: rgb(0, 0, 0);">Đăng nhập</a></li>
@@ -67,6 +67,7 @@
 						style="margin-left: 15px;"> <span class="text-uppercase">
 							Watchtopia Shop </span>
 					</a>
+<<<<<<< HEAD
 					<div class="dropdown">
 						<a type="button" class="dropbtn"> <i class="fa fa-user"
 							aria-hidden="true"></i>
@@ -76,6 +77,30 @@
 								Manager</a>
 								<div class="dropdown-divider"></div>
 								<a href="/account/logout">Đăng xuất</a>
+=======
+						<div class="right-item d-flex ml-auto">
+						<form action="/home/search" method="get">
+							<div class="find container">
+								<input placeholder="Nhập tên đồng hồ ..." required=""
+									class="input" name="search" type="text">
+								<div class="icon">
+									<i class="fa-brands fa-searchengin"></i>
+								</div>
+							</div>
+						</form>						
+							<a href="/cart/view"> <i class="fa fa-cart-plus"
+									aria-hidden="true"></i>
+							</a>
+								<div class="dropdown">
+									<a type="button" class="dropbtn">
+										<i class="fa fa-user" aria-hidden="true"></i>
+									</a>
+									<div class="dropdown-content">
+										<a href="/home/profile">Account</a> <a href="#">Link 2</a> <a
+											href="#">Link 3</a>
+									</div>
+								</div>
+>>>>>>> refs/remotes/origin/branch_xin_xo_2
 						</div>
 						
 					</div>
@@ -202,7 +227,7 @@
 					</c:forEach>
 				</div>
 				<div class="btn-box">
-					<a href=""> Tất cả </a>
+					<a href="/home/watch"> Tất cả </a>
 				</div>
 			</div>
 		</section>

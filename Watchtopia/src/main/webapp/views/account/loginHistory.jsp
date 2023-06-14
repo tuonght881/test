@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -102,7 +103,7 @@
     <aside id="sidebar" class="sidebar">
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item">
-                <a class="nav-link " href="">
+                <a class="nav-link " href="/admin/thongke">
                     <i class="fa-regular fa-clipboard"></i>
                     <span>Thống Kê</span>
                 </a>
@@ -114,12 +115,12 @@
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="">
+                        <a href="/product/addproduct">
                             <i class="fa-solid fa-caret-right" style="font-size: 15px;"></i><span>Thêm Sản Phẩm</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="/product/UpdateProduct">
                             <i class="fa-solid fa-caret-right" style="font-size: 15px;"></i><span>Cập Nhật Sản Phẩm</span>
                         </a>
                     </li>
@@ -139,7 +140,7 @@
                 </a>
                 <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="">
+                        <a href="/product/listproduct">
                             <i class="fa-solid fa-caret-right" style="font-size: 15px;"></i><span>Danh Sách Sản Phẩm</span>
                         </a>
                     </li>
@@ -158,12 +159,12 @@
                 </a>
                 <ul id="listUsers-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="">
+                        <a href="/admin/userlist">
                             <i class="fa-solid fa-caret-right" style="font-size: 15px;"></i><span>Danh Sách Tài Khoản</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="/admin/historylogs">
                             <i class="fa-solid fa-caret-right" style="font-size: 15px;"></i><span>Lịch Sử Đănh Nhập</span>
                         </a>
                     </li>
@@ -205,55 +206,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                <c:forEach var="item" items="${logs}">
                     <tr>
-                        <td>Mark</td>
-                        <td>mark@gmail.com</td>
-                        <td>25/05/2023</td>
-                        <td>25/05/2023</td>
-                        <td><a href="#">Xóa</a></td>
+                        <td>${item.user.fullname}</td>
+                        <td>${item.user.email}</td>
+                        <td>${item.login_time}</td>
+                        <td>${item.login_out}</td>
+                        <td><a href="/admin/delelelogs/${item.log_id}">Xóa</a></td>
                     </tr>
-                    <tr>
-                        <td>Mark</td>
-                        <td>mark@gmail.com</td>
-                        <td>25/05/2023</td>
-                        <td>25/05/2023</td>
-                        <td><a href="#">Xóa</a></td>
-                    </tr>
-                    <tr>
-                        <td>Mark</td>
-                        <td>mark@gmail.com</td>
-                        <td>25/05/2023</td>
-                        <td>25/05/2023</td>
-                        <td><a href="#">Xóa</a></td>
-                    </tr>
-                    <tr>
-                        <td>Mark</td>
-                        <td>mark@gmail.com</td>
-                        <td>25/05/2023</td>
-                        <td>25/05/2023</td>
-                        <td><a href="#">Xóa</a></td>
-                    </tr>
-                    <tr>
-                        <td>Mark</td>
-                        <td>mark@gmail.com</td>
-                        <td>25/05/2023</td>
-                        <td>25/05/2023</td>
-                        <td><a href="#">Xóa</a></td>
-                    </tr>
-                    <tr>
-                        <td>Mark</td>
-                        <td>mark@gmail.com</td>
-                        <td>25/05/2023</td>
-                        <td>25/05/2023</td>
-                        <td><a href="#">Xóa</a></td>
-                    </tr>
-                    <tr>
-                        <td>Mark</td>
-                        <td>mark@gmail.com</td>
-                        <td>25/05/2023</td>
-                        <td>25/05/2023</td>
-                        <td><a href="#">Xóa</a></td>
-                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </section>

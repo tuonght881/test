@@ -100,8 +100,8 @@
 
     <aside id="sidebar" class="sidebar">
         <ul class="sidebar-nav" id="sidebar-nav">
-            <li class="nav-item">
-                <a class="nav-link " href="">
+                        <li class="nav-item">
+                <a class="nav-link " href="/admin/thongke">
                     <i class="fa-regular fa-clipboard"></i>
                     <span>Thống Kê</span>
                 </a>
@@ -113,12 +113,12 @@
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="">
+                        <a href="/product/addproduct">
                             <i class="fa-solid fa-caret-right" style="font-size: 15px;"></i><span>Thêm Sản Phẩm</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="/product/UpdateProduct">
                             <i class="fa-solid fa-caret-right" style="font-size: 15px;"></i><span>Cập Nhật Sản Phẩm</span>
                         </a>
                     </li>
@@ -138,7 +138,7 @@
                 </a>
                 <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="">
+                        <a href="/product/listproduct">
                             <i class="fa-solid fa-caret-right" style="font-size: 15px;"></i><span>Danh Sách Sản Phẩm</span>
                         </a>
                     </li>
@@ -157,12 +157,12 @@
                 </a>
                 <ul id="listUsers-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="">
+                        <a href="/admin/userlist">
                             <i class="fa-solid fa-caret-right" style="font-size: 15px;"></i><span>Danh Sách Tài Khoản</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="/admin/historylogs">
                             <i class="fa-solid fa-caret-right" style="font-size: 15px;"></i><span>Lịch Sử Đănh Nhập</span>
                         </a>
                     </li>

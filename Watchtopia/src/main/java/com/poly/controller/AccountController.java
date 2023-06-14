@@ -66,7 +66,7 @@ public class AccountController {
 
 				if (u.isRoles() != true) {
 					ssSer.setAttribute("username", u);
-					cookieSer.create("checkEmail", username, 10);
+					ssSer.setAttribute("usercheck", u.getEmail());
 					
 					if (remember) {
 						cookieSer.create("email", username, 10);
