@@ -822,6 +822,7 @@ a:hover {
     z-index: 1;
     display: none;
     background-color: #fff;
+    left:-60px;	
 }
 
 .dropdown-content .dropdown-item {
