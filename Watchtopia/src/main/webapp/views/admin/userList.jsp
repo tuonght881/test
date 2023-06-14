@@ -34,11 +34,11 @@
 </head>
 
 <body>
-	<header id="header" class="header fixed-top d-flex align-items-center">
+<header id="header" class="header fixed-top d-flex align-items-center">
 		<div class="d-flex align-items-center justify-content-between">
-			<a href="index.html" class="logo d-flex align-items-center"> <img
-				src="/icon/smartwatch-app.png" alt=""> <span
-				class="d-none d-lg-block">LUCAS SHOP</span>
+			<a href="/home/watch" class="logo d-flex align-items-center"> <img
+				src="/icon/smartwatch-app.png" alt="/home/watch"> <span
+				class="d-none d-lg-block text-uppercase">Watchtopia</span>
 			</a> <i class="fa-solid fa-bars-staggered toggle-sidebar-btn"
 				style="font-size: 25px;"></i>
 		</div>
@@ -62,13 +62,13 @@
 					class="nav-link nav-profile d-flex align-items-center pe-0"
 					href="#" data-bs-toggle="dropdown"> <img
 						src="/icon/avatarNEW.png" alt="Profile" class="rounded-circle">
-						<span class="d-none d-md-block dropdown-toggle ps-2">Lucas</span>
+						<span class="d-none d-md-block dropdown-toggle ps-2">${username.fullname}</span>
 				</a>
 
 					<ul
 						class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 						<li class="dropdown-header">
-							<h6>Lucas - Tung</h6> <span>Admin</span>
+							<h6>${username.email}</h6> <span>Admin</span>
 						</li>
 						<li>
 							<hr class="dropdown-divider">
@@ -111,7 +111,7 @@
 
 	<aside id="sidebar" class="sidebar">
 		<ul class="sidebar-nav" id="sidebar-nav">
-			            <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link " href="/admin/thongke">
                     <i class="fa-regular fa-clipboard"></i>
                     <span>Thống Kê</span>
@@ -134,7 +134,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="/admin/inventory">
                             <i class="fa-solid fa-caret-right" style="font-size: 15px;"></i><span>Nhập Kho Sản Phẩm</span>
                         </a>
                     </li>
@@ -151,11 +151,6 @@
                     <li>
                         <a href="/product/listproduct">
                             <i class="fa-solid fa-caret-right" style="font-size: 15px;"></i><span>Danh Sách Sản Phẩm</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <i class="fa-solid fa-caret-right" style="font-size: 15px;"></i><span>Danh Sách Kho</span>
                         </a>
                     </li>
                 </ul>
@@ -183,11 +178,12 @@
 			<hr>
 
 			<li class="nav-item"><a class="nav-link collapsed"
-				href="profile.html"> <i class="fa-solid fa-circle-user"></i> <span>Trang
+				href="/home/profile"> <i class="fa-solid fa-circle-user"></i> <span>Trang
 						Cá Nhân</span>
 			</a></li>
 		</ul>
 	</aside>
+
 
 
 	<main id="main" class="main">

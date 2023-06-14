@@ -5,19 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 import com.poly.DAO.BranchDAO;
+import com.poly.DAO.InventoryDAO;
 import com.poly.DAO.ProductDAO;
 import com.poly.DAO.ProductTypeDAO;
 import com.poly.entity.Branch;
-
+import com.poly.entity.Inventory;
 import com.poly.entity.ProductType;
 import com.poly.entity.Products;
 import com.poly.service.ParamService;
@@ -40,6 +38,9 @@ public class ProductController {
 	
 	@Autowired
 	SessionService ss;
+	
+	@Autowired
+	InventoryDAO inventoryDao;
 	
 	// Đầu Thêm sản phẩm
 	@GetMapping("/product/addproduct")
@@ -66,6 +67,13 @@ public class ProductController {
 			p.setProduct_price(price);
 			
 			dao.save(p);
+			
+			Products newProduct = dao.findTop1ProductIdBySQL();
+			Inventory inven = new Inventory();
+			
+			inven.setProduct(newProduct);
+			inven.setQuantity(0);
+			inventoryDao.save(inven);
 			
 		} catch (Exception e) {
 			// TODO: handle exception

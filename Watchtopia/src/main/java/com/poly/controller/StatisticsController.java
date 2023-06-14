@@ -12,7 +12,7 @@ import com.poly.DAO.ThongKeDAO;
 import com.poly.entity.ThongKe;
 
 @Controller
-public class ThongKeController {
+public class StatisticsController {
 	
 	@Autowired
 	ThongKeDAO tkDao;

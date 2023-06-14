@@ -2,11 +2,10 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="fr"%>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sản Phẩm</title>
 <link rel="icon" type="image/x-icon" href="/icon/statustic.png">
 <link rel="stylesheet"
@@ -17,23 +16,16 @@
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="/css/statustics.css">
-<link rel="stylesheet" href="/css/ListProduct.css">
-<link rel="stylesheet" href="/css/index.css">
 <script src="/js/jquery.min.js"></script>
 <script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+	integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
 	crossorigin="anonymous"></script>
 <script
-	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
-	integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
-	integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+	integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
 	crossorigin="anonymous"></script>
 </head>
-
 <body>
 	<header id="header" class="header fixed-top d-flex align-items-center">
 		<div class="d-flex align-items-center justify-content-between">
@@ -191,75 +183,94 @@
 	</aside>
 
 
+
 	<main id="main" class="main">
 		<div class="pagetitle">
-			<h1>Danh Sách Sản Phẩm</h1>
+			<h1>Quản lí kho</h1>
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="/Statistics.html">Trang
 							Chủ</a></li>
 					<li class="breadcrumb-item"><a href="/Statistics.html">Sản
 							Phẩm</a></li>
-					<li class="breadcrumb-item active">Danh Sách Sản Phẩm</li>
+					<li class="breadcrumb-item active">Kho hàng</li>
 				</ol>
 			</nav>
 		</div>
-		<section class="shop_section layout_padding">
-			<c:if test="${userNull == true}">
-				<div class="notification">
-					<div class="toast-war warning-war">
-						<i class="fa-solid fa-triangle-exclamation"></i>
-						<div class="content">
-							<div class="title-war">Cảnh Báo!</div>
-							<span>Bạn chưa đăng nhập vào tài khoản.</span>
-						</div>
-					</div>
-				</div>
-			</c:if>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="box">
-							
-								<div class="img-box">
-									<img src="/img/${item.product_img}" alt="">
-								</div>
-								<div class="detail-box">
-									<h6>${item.product_name}</h6>
-									<h6>
-										Giá: <span> ${item.product_price} VNĐ </span>
-									</h6>
-								</div>
-								<div class="new">
-									<span> Nổi Bật </span>
-								</div>
-							
-						</div>
-					</div>
-					<c:forEach var="p" items="${items}">
-						<div class="col-sm-6 col-xl-3">
+		<section class="section dashboard">
+			<div class="row">
+				<div class="col-xl-12">
 
-							<div class="box">
-								
-									<div class="img-box">
-										<img src="/img/${p.product_img}" alt="">
-									</div>
-									<div class="detail-box">
-										<h6>${p.product_name}</h6>
-										<h6>
-											Giá: <span> ${p.product_price} VNĐ </span>
-										</h6>
-									</div>
-									<div class="new">
-										<span> Mới </span>
-									</div>
-								
+					<table class="table table-dark table-striped table-hover">
+						<thead>
+							<tr>
+								<th scope="col">Mã kho</th>
+								<th scope="col">Tên sản phẩm</th>
+								<th scope="col">Số lượng</th>	
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="item" items="${listInventory}">
+								<tr>
+									<th>${item.id}</th>
+									<td>${item.product.product_name}</td>
+									<td>${item.quantity}</td>
+									<td><a href="/admin/inventory/edit?id=${item.id }" style="text-decoration: none;">Cập
+											nhật</a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+
+					<div class="card">
+						<div class="card-body pt-3">
+							<ul class="nav nav-tabs nav-tabs-bordered">
+								<li class="nav-item">
+									<button class="nav-link active" data-bs-toggle="tab"
+										data-bs-target="#addProduct">Cập nhật kho hàng</button>
+								</li>
+							</ul>
+							<div class="tab-content pt-2">
+								<div class="tab-pane fade show active pt-3" id="addProduct">
+									<form action="/admin/inventory/update" method="post">
+
+										<input type="hidden" name="idInventory" value="${itemInven.id}">
+										<div class="row mb-3">
+											<label for="fullName"
+												class="col-md-4 col-lg-3 col-form-label">Tên Sản
+												Phẩm</label>
+											<div class="col-md-8 col-lg-9">
+												<input name="product_name"
+													value="${itemInven.product.product_name}" type="text"
+													class="form-control" id="fullName" readonly="readonly"
+													placeholder="Tên sản phẩm" />
+											</div>
+										</div>
+
+										<div class="row mb-3">
+											<label for="about" class="col-md-4 col-lg-3 col-form-label">Số lượng</label>
+											<div class="col-md-8 col-lg-9">
+												<input name="quantity"
+													value="${itemInven.quantity}" min="0" class="form-control"
+													type="number" id="about"  />
+											</div>
+										</div>
+
+										<div class="row mb-3">
+											<label for="Country" class="col-md-4 col-lg-3 col-form-label"></label>
+											<div class="col-md-8 col-lg-9">
+												<button type="submit" 
+													class="btn btn-primary">Cập nhật</button>
+											</div>
+										</div>
+									</form>
+								</div>
 							</div>
-
 						</div>
-					</c:forEach>
+					</div>
+
 				</div>
-				
 			</div>
 		</section>
 
@@ -280,6 +291,9 @@
 		</button>
 	</div>
 
+	<script src="/js/jquery-latest.min.js"></script>
+	<script src="/js/FileNameJS.js"></script>
+	
 	<script src="/js/statistics.js"></script>
 	<script src="/js/backTop.js"></script>
 </body>
