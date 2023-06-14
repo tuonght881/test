@@ -9,6 +9,7 @@ import com.poly.service.AuthInterceptor;
 
 @Configuration
 public class InterConfig2 implements WebMvcConfigurer{
+	//tt
 	@Autowired
 	AuthInterceptor auth;
 	
