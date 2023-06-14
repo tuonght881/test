@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "orders")
+@Table(name = "inventory")
 public class Inventory  implements Serializable{/**
 	 * 
 	 */
