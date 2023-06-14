@@ -107,12 +107,6 @@ public class ProductController {
 		
 		ss.setAttribute("id", item.getProduct_id());
 		
-		
-//		Branch branchs = branchDAO.findById(item.getBranch().getBrands_id()).get();
-//		ProductType types = typeDAO.findById(item.getType().getTypes_id()).get();
-//		
-//		m.addAttribute("types", types);
-//		m.addAttribute("branchs", branchs);
 		m.addAttribute("products", items);
 		return "/admin/UpdateProduct";
 	}
@@ -141,4 +135,13 @@ public class ProductController {
 	}
 	
 	// Đầu Cập nhật sản phẩm
+	
+	@GetMapping("/product/listproduct") 
+	public String getListProduct(Model m) {
+		Products p = dao.findByKeywordsBySQL();
+		List<Products> items = dao.findByKeywordsAllBySQL();
+		m.addAttribute("item", p);
+		m.addAttribute("items", items);
+		return "/admin/listProduct";
+	}
 }

@@ -40,8 +40,9 @@ public class HomeController {
 	@GetMapping("/home/watch")
 	public String getHome(Model m) {
 		Products p = dao.findByKeywordsBySQL();
-		String ucheck = cook.getValue("checkEmail");
-		if(ucheck==null) {
+//		String ucheck = cook.getValue("checkEmail");
+		String ucheck = ssSer.getAttribute("usercheck");
+		if(ucheck == null) {
 			m.addAttribute("hidden", false);
 			List<Products> items = dao.findByKeywordsAllBySQL();
 			m.addAttribute("item", p);
@@ -66,12 +67,12 @@ public class HomeController {
 		if(ucheck==null) {
 			m.addAttribute("hidden", false);
 			List<Products> items = dao.findByKeywordsAllBySQL(search);
-			m.addAttribute("item", p);
+			m.addAttribute("item", null);
 			m.addAttribute("items", items);
 		}else {
 			m.addAttribute("hidden",true);
 			List<Products> items = dao.findByKeywordsAllBySQL(search);
-			m.addAttribute("item", p);
+			m.addAttribute("item", null);
 			m.addAttribute("items", items);
 		}
 		
@@ -92,7 +93,7 @@ public class HomeController {
 	//
 	@GetMapping("/home/profile")
 	public String getProfile(Model m) {
-		String u = cook.getValue("checkEmail");
+		String u = ssSer.getAttribute("usercheck");
 //		Users u = ssSer.getAttribute("username");
 		if(u == null) {
 			m.addAttribute("userNull", true);

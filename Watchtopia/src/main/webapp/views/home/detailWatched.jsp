@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -35,11 +36,11 @@
 <body>
 	<div class="cover">
 		<header>
-		<div class="container-fluid">
-			<nav class="navbar navbar-expand-lg custom_nav-container ">
+			<div class="container-fluid">
+				<nav class="navbar navbar-expand-lg custom_nav-container ">
 					<a class="navbar-brand" href="/home/watch"
-						style="margin-left: 15px; color:black; font-weight: bold; font-size: 14"> <span class="text-uppercase">
-							Watchtopia Shop </span>
+						style="margin-left: 15px; color: black; font-weight: bold; font-size: 14">
+						<span class="text-uppercase"> Watchtopia Shop </span>
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navbarSupportedContent"
@@ -74,16 +75,26 @@
 						</div>
 					</div>
 				</nav>
-		</div>
+			</div>
 		</header>
 
 
 		<!-- Chi tiết sản phẩm -->
 		<section class="detail" style="margin-bottom: 10px">
+			<c:if test="${userNull == true}">
+				<div class="notification">
+					<div class="toast-war warning-war">
+						<i class="fa-solid fa-triangle-exclamation"></i>
+						<div class="content">
+							<div class="title-war">Cảnh Báo!</div>
+							<span>Bạn chưa đăng nhập vào tài khoản.</span>
+						</div>
+					</div>
+				</div>
+			</c:if>
 			<main>
 				<div class="col-sm-12">
-					<div class="card sm-12"
-						>
+					<div class="card sm-12">
 						<div class="row no-gutters">
 							<div class="col-md-4">
 								<div id="carouselExampleFade"
@@ -215,8 +226,8 @@
 													<line y2="12" y1="12" x2="19" x1="5"></line>
                                                 </svg>
 										</span>
-										</a>
-										<a href="/cart/buy/${p.product_id}" type="button" class="btn btn-danger">Mua Ngay</a>
+										</a> <a href="/cart/buy/${p.product_id}" type="button"
+											class="btn btn-danger">Mua Ngay</a>
 									</div>
 								</div>
 
@@ -531,7 +542,7 @@
 			</button>
 		</div>
 
-<footer class="footer_section">
+		<footer class="footer_section">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-lg-3 footer-col">
@@ -540,8 +551,7 @@
 							<p style="color: #ffff;">Lucas Shop chuyên bán những dòng
 								đồng hồ nam - nữ thời trang phù hợp cho tất cả các lứa tuổi</p>
 							<div class="footer_social">
-								<a href=""> <i class="fa-brands fa-facebook"></i>
-<!-- 								</a> <a href=""> <i class="fa-brands fa-linkedin-in"></i>
+								<a href=""> <i class="fa-brands fa-facebook"></i> <!-- 								</a> <a href=""> <i class="fa-brands fa-linkedin-in"></i>
 								</a> <a href=""> <i class="fa-brands fa-tiktok"></i> -->
 								</a> <a href=""> <i class="fa-brands fa-instagram"></i>
 								</a>
@@ -557,15 +567,15 @@
 								</a> <a href=""> <i class="fa fa-phone" aria-hidden="true"></i>
 									<span> 012 345 678 </span>
 								</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
-									<span> tungtqpc04315@fpt.edu.vn </span></a>
-									</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
-									<span> thiendtpc@fpt.edu.vn </span></a>
-									</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
-									<span> tuonghtpc04356.edu.vn </span></a>
-									</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
-									<span> haoncpc04337@fpt.edu.vn </span></a>
-									</a> <a href=""> <i class="fa fa-envelope" aria-hidden="true"></i>
-									<span> phatdlgpc@fpt.edu.vn </span>
+									<span> tungtqpc04315@fpt.edu.vn </span></a> </a> <a href=""> <i
+									class="fa fa-envelope" aria-hidden="true"></i> <span>
+										thiendtpc@fpt.edu.vn </span></a> </a> <a href=""> <i
+									class="fa fa-envelope" aria-hidden="true"></i> <span>
+										tuonghtpc04356.edu.vn </span></a> </a> <a href=""> <i
+									class="fa fa-envelope" aria-hidden="true"></i> <span>
+										haoncpc04337@fpt.edu.vn </span></a> </a> <a href=""> <i
+									class="fa fa-envelope" aria-hidden="true"></i> <span>
+										phatdlgpc@fpt.edu.vn </span>
 								</a>
 							</div>
 						</div>
@@ -602,5 +612,6 @@
 		</footer>
 	</div>
 	<script src="/js/backTop.js"></script>
+	<script src="/js/notification.js"></script>
 </body>
 </html>

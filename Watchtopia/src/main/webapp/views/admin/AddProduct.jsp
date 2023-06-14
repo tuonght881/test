@@ -116,9 +116,11 @@
 							class="fa-solid fa-caret-right" style="font-size: 15px;"></i><span>Thêm
 								Sản Phẩm</span>
 					</a></li>
-					<li><a href=""> <i class="fa-solid fa-caret-right"
-							style="font-size: 15px;"></i><span>Cập Nhật Sản Phẩm</span>
-					</a></li>
+					<li>
+                        <a href="/product/UpdateProduct">
+                            <i class="fa-solid fa-caret-right" style="font-size: 15px;"></i><span>Cập Nhật Sản Phẩm</span>
+                        </a>
+                    </li>
 					<li><a href=""> <i class="fa-solid fa-caret-right"
 							style="font-size: 15px;"></i><span>Nhập Kho Sản Phẩm</span>
 					</a></li>

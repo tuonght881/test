@@ -37,7 +37,7 @@
 				<div class="row no-gutters" style="height: 15px;">
 					<div class="col-12 col-sm-6 col-md-8" style="margin-top: -20px;">
 						<ul class="nav nav-top">
-							<c:if test="${hidden ==false}">
+							<c:if test="${hidden == false}">
 								<li class="nav-item nav_item"><a
 									class="nav-link nav_link active" href="/account/login"
 									style="color: rgb(0, 0, 0);">Đăng nhập</a></li>
@@ -68,13 +68,15 @@
 							Watchtopia Shop </span>
 					</a>
 						<div class="right-item d-flex ml-auto">
+						<form action="/home/search" method="get">
 							<div class="find container">
 								<input placeholder="Nhập tên đồng hồ ..." required=""
-									class="input" name="text" type="text">
+									class="input" name="search" type="text">
 								<div class="icon">
 									<i class="fa-brands fa-searchengin"></i>
 								</div>
-							</div>						
+							</div>
+						</form>						
 							<a href="/cart/view"> <i class="fa fa-cart-plus"
 									aria-hidden="true"></i>
 							</a>
@@ -199,7 +201,7 @@
 					</c:forEach>
 				</div>
 				<div class="btn-box">
-					<a href=""> Tất cả </a>
+					<a href="/home/watch"> Tất cả </a>
 				</div>
 			</div>
 		</section>
