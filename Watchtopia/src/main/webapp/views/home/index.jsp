@@ -31,7 +31,7 @@
 </head>
 <body>
 	<div class="cover">
-		<!-- menu  -->
+		<!-- menu  trang chu -->
 		<header class="header_section">
 			<div class="container-fluid">
 				<div class="row no-gutters" style="height: 15px;">
