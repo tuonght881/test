@@ -21,4 +21,5 @@ public interface ProductDAO extends JpaRepository<Products, Integer>{
 			+ " where c.users_id = ?1 "
 			+ " group by c.product_id, p.product_img, p.product_name, p.product_price, p.types_id, p.brands_id, p.product_describe, c.quantity " , nativeQuery = true)
 	List<Products> findCartByKeyWordBySQL(int maKH);
+
 }

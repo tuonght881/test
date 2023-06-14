@@ -35,7 +35,7 @@ public class InventoryController {
 		
 		return "/admin/inventory";
 	}
-	
+	// cap nhat moi
 	@RequestMapping("/admin/inventory/edit")
 	public String editInventory(Model m) {
 		int idV = pService.getInt("id", -1);

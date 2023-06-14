@@ -13,4 +13,5 @@ public interface InventoryDAO extends JpaRepository<Inventory, Integer>{
 	List<Inventory> getListInventories();
 	
 	Inventory  findBfindById(int id);
+	
 }
