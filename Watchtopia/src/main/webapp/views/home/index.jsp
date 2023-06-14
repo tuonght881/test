@@ -67,7 +67,6 @@
 						style="margin-left: 15px;"> <span class="text-uppercase">
 							Watchtopia Shop </span>
 					</a>
-<<<<<<< HEAD
 					<div class="dropdown">
 						<a type="button" class="dropbtn"> <i class="fa fa-user"
 							aria-hidden="true"></i>
@@ -77,7 +76,6 @@
 								Manager</a>
 								<div class="dropdown-divider"></div>
 								<a href="/account/logout">Đăng xuất</a>
-=======
 						<div class="right-item d-flex ml-auto">
 						<form action="/home/search" method="get">
 							<div class="find container">
@@ -100,7 +98,6 @@
 											href="#">Link 3</a>
 									</div>
 								</div>
->>>>>>> refs/remotes/origin/branch_xin_xo_2
 						</div>
 						
 					</div>
