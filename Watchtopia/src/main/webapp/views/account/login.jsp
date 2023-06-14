@@ -71,6 +71,7 @@
 					type="password" class="input_field" id="password_field"
 					value="${pass}">
 			</div>
+			<b><i>${param.error}</i></b>
 			<div class="input_container form-check">
 				<input type="checkbox" class="form-check-input" id="exampleCheck1"
 					name="remember" value="true"> <label
