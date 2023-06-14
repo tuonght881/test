@@ -19,7 +19,7 @@ public class InventoryController {
 
 	@Autowired
 	InventoryDAO ivenDAO;
-	
+	//kk
 	@Autowired
 	SessionService sService;
 	@Autowired
