@@ -87,7 +87,7 @@ public class AccountController {
 				} else {
 					
 					ssSer.setAttribute("username", u);
-					cookieSer.create("checkEmail", username, 10);
+					ssSer.setAttribute("usercheck", u.getEmail());
 					
 					if (remember) {
 						cookieSer.create("user", username, 10);
@@ -324,7 +324,7 @@ public class AccountController {
 		ssSer.setAttribute("username", "");
 		cookieSer.delete("user");
 		cookieSer.delete("pass");
-		cookieSer.delete("checkEmail");
+		ssSer.setAttribute("usercheck", null);
 		
 		
 		Logs Lastlogin = logsDao.findByKeywordsBySQL();
@@ -335,7 +335,7 @@ public class AccountController {
 		log.setLogin_out(new Date());
 		
 		logsDao.save(log);
-		return "/account/login";
+		return "redirect:/home/watch";
 	}
 	
 	// Trang cá nhân
