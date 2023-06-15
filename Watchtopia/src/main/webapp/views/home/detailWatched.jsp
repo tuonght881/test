@@ -50,8 +50,9 @@
 										<i class="fa fa-user" aria-hidden="true"></i>
 									</a>
 									<div class="dropdown-content">
-										<a href="/home/profile">Account</a> <a href="#">Link 2</a> <a
-											href="#">Link 3</a>
+										<a href="/home/profile">Trang cá nhân</a> 
+								<div class="dropdown-divider"></div>
+								<a href="/account/logout">Đăng xuất</a>
 									</div>
 								</div>
 						</div>
@@ -142,7 +143,7 @@
 									</p>
 									<div class="alert alert-dark" role="alert"
 										style="display: flex; padding: 20px;">
-										<strike style="margin-right: 20px;">₫710.000 -
+										<strike style="margin-right: 20px;">
 											₫790.000</strike>
 										<h3 style="margin-right: 20px;">
 											<mark style="color: red;">${p.product_price}</mark>
@@ -176,12 +177,7 @@
 									<div class="row" style="margin: 50px 0 50px -10px;">
 										<div class="col-sm-2">Số lượng:</div>
 										<div class="col-sm-10">
-											<div class="buttons_added">
-												<input class="minus is-form" type="button" value="-">
-												<input aria-label="quantity" class="input-qty" max="100"
-													min="1" name="" type="number" value="1"> <input
-													class="plus is-form" type="button" value="+">
-											</div>
+											${inven.quantity}
 										</div>
 									</div>
 									<div class="row">
