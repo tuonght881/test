@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.poly.DAO.InventoryDAO;
 import com.poly.DAO.ProductDAO;
 import com.poly.DAO.UsersDAO;
+import com.poly.entity.Inventory;
 import com.poly.entity.Products;
 import com.poly.entity.Users;
 import com.poly.service.CookieService;
@@ -28,6 +30,9 @@ public class HomeController {
 
 	@Autowired
 	UsersDAO udao;
+	
+	@Autowired
+	InventoryDAO invenDao;
 	
 	@Autowired
 	CookieService cook;
@@ -83,6 +88,9 @@ public class HomeController {
 	public String getDetailWatched(Model m, @PathVariable("id") int id) {
 
 		Products p = dao.findById(id).get();
+		Inventory inven = invenDao.findObject(id);
+		
+		m.addAttribute("inven", inven);
 		m.addAttribute("p", p);
 
 		return "/home/detailWatched";

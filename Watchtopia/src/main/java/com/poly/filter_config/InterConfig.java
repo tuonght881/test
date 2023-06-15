@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+
+
 @Configuration
 public class InterConfig implements WebMvcConfigurer{
 	//test commit
@@ -13,7 +15,7 @@ public class InterConfig implements WebMvcConfigurer{
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(auth).addPathPatterns("/account/edit", "/account/updateinfo", "/account/changePassword", "/account/logout", "/account/profileUser", "/cart/add/*","/admin/*","/product/addproduct")
+		registry.addInterceptor(auth).addPathPatterns("/account/edit", "/account/updateinfo", "/account/changePassword", "/account/logout", "/account/profileUser", "/cart/add/*","/admin/*")
 				.excludePathPatterns("/assets/**", "/admin/home/index");
 	}
 }

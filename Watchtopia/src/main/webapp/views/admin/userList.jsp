@@ -36,8 +36,8 @@
 <body>
 <header id="header" class="header fixed-top d-flex align-items-center">
 		<div class="d-flex align-items-center justify-content-between">
-			<a href="/home/watch" class="logo d-flex align-items-center"> <img
-				src="/icon/smartwatch-app.png" alt="/home/watch"> <span
+			<a href="/admin/thongke" class="logo d-flex align-items-center"> <img
+				src="/icon/smartwatch-app.png" alt="/admin/thongke"> <span
 				class="d-none d-lg-block text-uppercase">Watchtopia</span>
 			</a> <i class="fa-solid fa-bars-staggered toggle-sidebar-btn"
 				style="font-size: 25px;"></i>
