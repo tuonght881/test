@@ -84,6 +84,7 @@
 								<div class="dropdown-divider"></div>
 								<a href="/account/logout">Đăng xuất</a>
 						</div>
+						<!-- test -->
 						
 					</div>
 						<a href="/cart/view"> <i class="fa fa-cart-plus"
