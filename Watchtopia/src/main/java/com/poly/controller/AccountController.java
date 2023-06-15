@@ -226,7 +226,7 @@ public class AccountController {
 			
 			String f = paramSer.getString("fullname", "");
 			String p = paramSer.getString("phone", "");
-			Users u = ssSer.getAttribute("user");
+			Users u = ssSer.getAttribute("username");
 			
 				user.setUsers_id(u.getUsers_id());
 				user.setActive(u.isActive());
@@ -253,7 +253,7 @@ public class AccountController {
 			
 			String pass = paramSer.getString("passwords", "");
 			String pass2 = paramSer.getString("passwordsTwo", "");
-			Users u = ssSer.getAttribute("user");
+			Users u = ssSer.getAttribute("username");
 			
 			if(pass2.equalsIgnoreCase(pass)) {
 				user.setUsers_id(u.getUsers_id());
