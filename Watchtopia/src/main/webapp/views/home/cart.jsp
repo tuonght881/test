@@ -17,6 +17,7 @@
 	rel="stylesheet"
 	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 	crossorigin="anonymous">
+<link rel="stylesheet" href="/css/index.css">
 </head>
 
 <body>
@@ -38,6 +39,17 @@
 
 	<div class="container">
 		<section class="h-100 h-custom">
+		<c:if test="${addressNull == true}">
+				<div class="notification">
+					<div class="toast-war warning-war">
+						<i class="fa-solid fa-triangle-exclamation"></i>
+						<div class="content">
+							<div class="title-war">Cảnh Báo!</div>
+							<span>Bạn chưa nhập đủ thông tin nhận hàng.</span>
+						</div>
+					</div>
+				</div>
+			</c:if>
 			<div class="container h-100 py-5">
 				<div
 					class="row d-flex justify-content-center align-items-center h-100">
@@ -255,5 +267,7 @@
 		</div>
 
 	</footer>
+	
+	<script src="/js/notification.js"></script>
 </body>
 </html>

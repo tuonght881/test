@@ -53,16 +53,26 @@ public class ShoppingCart implements ShoppingCartService{
 		Products p = repo.findById(id).get();
 
 		CartItem cartFind = cart.findByObjectCartSQL(p.getProduct_id(), u.getUsers_id());
+		Inventory inven = invenDao.findObject(id);
 		CartItem item = new CartItem();
+		
 		if(cartFind == null) {
 			item.setProduct(p);
 			item.setUsers(u);
 			item.setQuantity(1);
 		}else {
-			item.setCart_id(cartFind.getCart_id());
-			item.setProduct(p);
-			item.setUsers(u);
-			item.setQuantity(cartFind.getQuantity() + 1);
+			if(cartFind.getQuantity() == inven.getQuantity()) {
+				item.setCart_id(cartFind.getCart_id());
+				item.setProduct(p);
+				item.setUsers(u);
+				item.setQuantity(cartFind.getQuantity());
+			}else {
+				item.setCart_id(cartFind.getCart_id());
+				item.setProduct(p);
+				item.setUsers(u);
+				item.setQuantity(cartFind.getQuantity() + 1);
+			}
+			
 		}		
 		cart.save(item);
 	}
