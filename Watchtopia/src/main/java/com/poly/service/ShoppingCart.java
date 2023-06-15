@@ -93,9 +93,7 @@ public class ShoppingCart implements ShoppingCartService{
 
 		CartItem cartFind = cart.findByObjectCartSQL(p.getProduct_id(), u.getUsers_id());
 		Inventory inven = invenDao.findObject(id);
-		if(cartFind.getQuantity() > inven.getQuantity()) {
-			
-		}
+		
 		if(action.equalsIgnoreCase("cong")) {
 			if(cartFind.getQuantity() == inven.getQuantity()) {
 				item.setCart_id(cartFind.getCart_id());
