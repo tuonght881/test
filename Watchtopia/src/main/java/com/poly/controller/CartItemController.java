@@ -141,41 +141,86 @@ public class CartItemController {
 		return "redirect:/cart/view";
 	}
 
+	public boolean checkPay(Model m) {
+		String address = param.getString("address", "");
+		String fullname = param.getString("fullname", "");
+		String phone = param.getString("phone", "");
+
+		if (fullname.equalsIgnoreCase("")) {
+			m.addAttribute("addressNull", true);
+			return false;
+		}
+		if (phone.equalsIgnoreCase("")) {
+			m.addAttribute("addressNull", true);
+			return false;
+		}
+		if (address.equalsIgnoreCase("")) {
+			m.addAttribute("addressNull", true);
+			return false;
+		}
+
+		return true;
+	}
+
 	// Đặt hàng
 	@PostMapping("/cart/pay")
-	public String cart() {
+	public String cart(Model m) {
 		Users u = ss.getAttribute("username");
 		String address = param.getString("address", "");
 		String fullname = param.getString("fullname", "");
 		String phone = param.getString("phone", "");
 
-		// insert voo bang order
-		Order orderAdd = new Order();
+		if (checkPay(m)) {
+			// insert voo bang order
+			Order orderAdd = new Order();
 
-		orderAdd.setEmail(u.getEmail());
-		orderAdd.setFullname(fullname);
-		orderAdd.setOrders_address(address);
-		orderAdd.setOrders_time(new Date());
-		orderAdd.setPhone(phone);
+			orderAdd.setEmail(u.getEmail());
+			orderAdd.setFullname(fullname);
+			orderAdd.setOrders_address(address);
+			orderAdd.setOrders_time(new Date());
+			orderAdd.setPhone(phone);
 
-		orderDao.save(orderAdd);
+			orderDao.save(orderAdd);
 
-		List<CartItem> lisst = cartDao.findAllBySQL(u.getUsers_id());
-		// insert vo bang order detail
-		// test222
-		for (int i = 0; i < lisst.size(); i++) {
-			Order orFind = orderDao.findTop1BySQL();
-			OrderDetail orderDetail = new OrderDetail();
-			orderDetail.setOrder(orFind);
-			orderDetail.setProduct(lisst.get(i).getProduct());
-			orderDetail.setQuantity(lisst.get(i).getQuantity());
+			List<CartItem> lisst = cartDao.findAllBySQL(u.getUsers_id());
+			// insert vo bang order detail
+			// test222
+			for (int i = 0; i < lisst.size(); i++) {
+				Order orFind = orderDao.findTop1BySQL();
+				OrderDetail orderDetail = new OrderDetail();
+				orderDetail.setOrder(orFind);
+				orderDetail.setProduct(lisst.get(i).getProduct());
+				orderDetail.setQuantity(lisst.get(i).getQuantity());
 
-			orderDetailDao.save(orderDetail);
+				orderDetailDao.save(orderDetail);
+			}
+			
+	
+			cartDao.deleteAll();
+		}else {
+			try {
+				double tongTien = 0;
+				
+
+				List<CartItem> item = cartDao.findAllBySQL(u.getUsers_id());
+				List<CartItem> cartQuantity = cartDao.findAllBySQL(u.getUsers_id());
+//				
+				for (int i = 0; i < item.size(); i++) {
+					tongTien += item.get(i).getProduct().getProduct_price() * item.get(i).getQuantity();
+				}
+
+				// m.addAttribute("soLuong", soLuong);
+
+				m.addAttribute("sum", tongTien);
+				m.addAttribute("cartQuantity", cartQuantity);
+				m.addAttribute("cart", item);
+
+			} catch (NumberFormatException e) {
+
+			}
+
 		}
-
-		cartDao.deleteAll();
-
-		return "redirect:/cart/view";
+		return "/home/cart";
 	}
 
 }
