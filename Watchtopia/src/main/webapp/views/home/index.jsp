@@ -80,8 +80,7 @@
 							aria-hidden="true"></i>
 						</a>
 						<div class="dropdown-content">
-							<a href="/home/profile">Account</a> <a href="/product/addproduct">Product
-								Manager</a>
+							<a href="/home/profile">Trang cá nhân</a> 
 								<div class="dropdown-divider"></div>
 								<a href="/account/logout">Đăng xuất</a>
 						</div>
