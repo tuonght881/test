@@ -13,6 +13,7 @@
 	rel="stylesheet"
 	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 	crossorigin="anonymous">
+	<script src="/js/backTop.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -70,6 +71,9 @@
 				<input placeholder="Password" title="Inpit title" name="password"
 					type="password" class="input_field" id="password_field"
 					value="${pass}">
+			</div>
+											<div class="showpassw">
+																		<input type="checkbox" onclick="showpass3()"> Show Password
 			</div>
 			<b><i>${param.error}</i></b>
 			<div class="input_container form-check">

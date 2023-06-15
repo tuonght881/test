@@ -128,8 +128,8 @@
 												placeholder="Phone">
 										</div>
 										<div class="col">
-											<label for="">Mật khẩu</label> <input type="text"
-												name="passwords" value="${user.passwords}"
+											<label for="">Mật khẩu</label> <input type="password"
+												name="passwords" value="${user.passwords}" id="passan"
 												class="form-control" placeholder="khongcomatkhau" disabled>
 										</div>
 										<div style="padding-top: 15px">
@@ -167,7 +167,7 @@
 						<label for="inputEmail3" class="col-sm-2 col-form-label">Mật
 							khẩu cũ</label>
 						<div class="col-sm-10">
-							<input type="text" name="pass" class="form-control"
+							<input type="password" name="pass" class="form-control"
 								id="inputEmail3">
 						</div>
 					</div>
@@ -176,7 +176,7 @@
 							khẩu mới</label>
 						<div class="col-sm-10">
 							<input type="password" name="np" class="form-control"
-								id="inputPassword3">
+								id="inputPassword3">							
 						</div>
 					</div>
 					<div class="row mb-3">
@@ -184,7 +184,8 @@
 							lại mật khẩu mới</label>
 						<div class="col-sm-10">
 							<input type="password" name="np2" class="form-control"
-								id="inputPassword3">
+								id="inputPassword34">
+								<input type="checkbox" onclick="showpass2()"> Show Password
 						</div>
 					</div>
 					<div class="row mb-3">
