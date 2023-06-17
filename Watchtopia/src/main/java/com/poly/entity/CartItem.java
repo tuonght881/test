@@ -27,17 +27,6 @@ public class CartItem implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-//	private Integer id;
-//	private String name;
-//	private double price;
-//	private int qty = 1;
-//	
-//	public CartItem(CartItem item) {
-//		this.id = item.getId();
-//		this.name = item.getName();
-//		this.price = item.getPrice();
-//		this.qty = 1;
-//	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cart_id;

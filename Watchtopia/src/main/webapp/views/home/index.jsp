@@ -82,7 +82,9 @@
 						<div class="dropdown-content">
 							<a href="/home/profile">Trang cá nhân</a> 
 								<div class="dropdown-divider"></div>
+								<c:if test="${hidden == true}">
 								<a href="/account/logout">Đăng xuất</a>
+								</c:if>
 						</div>
 						<!-- test222 -->
 						

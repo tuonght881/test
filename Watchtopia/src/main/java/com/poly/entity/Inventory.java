@@ -33,6 +33,6 @@ public class Inventory  implements Serializable{/**
 	@JoinColumn(name = "product_id")
 	Products product;
 	
-	private int quantity;
+	private int quantity = 0;
 
 }
