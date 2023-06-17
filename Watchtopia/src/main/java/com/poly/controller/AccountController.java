@@ -321,7 +321,7 @@ public class AccountController {
 	// Đăng xuất
 	@GetMapping("/account/logout")
 	public String logOut(Logs log) {
-		ssSer.setAttribute("username", "");
+		ssSer.setAttribute("username", null);
 		cookieSer.delete("user");
 		cookieSer.delete("pass");
 		cookieSer.delete("checkEmail");
