@@ -28,13 +28,13 @@ public class AccountController {
 
 	@Autowired
 	SessionService ssSer;
-	
+
 	@Autowired
 	EmailSenderService emailSer;
 
 	@Autowired
 	UsersDAO dao;
-	
+
 	@Autowired
 	LogsDAO logsDao;
 
@@ -51,11 +51,11 @@ public class AccountController {
 
 		return "/account/login";
 	}
-	// phương thức post 
+
+	// phương thức post
 	@PostMapping("/accountpost/login")
 	public String postLogin(Model m, Logs log) {
-		 
-		
+
 		String username = paramSer.getString("email", "");
 		String password = paramSer.getString("password", "");
 		boolean remember = paramSer.getBoolea("remember", false);
@@ -67,7 +67,7 @@ public class AccountController {
 				if (u.isRoles() != true) {
 					ssSer.setAttribute("username", u);
 					ssSer.setAttribute("usercheck", u.getEmail());
-					
+
 					if (remember) {
 						cookieSer.create("email", username, 10);
 						cookieSer.create("pass", password, 10);
@@ -75,20 +75,18 @@ public class AccountController {
 						cookieSer.delete("email");
 						cookieSer.delete("pass");
 					}
-					
-					
-					
+
 					log.setUser(u);
 					log.setLogin_time(new Date());
 					log.setLogin_out(null);
-					
+
 					logsDao.save(log);
 					return "redirect:/home/watch";
 				} else {
-					
+
 					ssSer.setAttribute("username", u);
 					ssSer.setAttribute("usercheck", u.getEmail());
-					
+
 					if (remember) {
 						cookieSer.create("user", username, 10);
 						cookieSer.create("pass", password, 10);
@@ -96,16 +94,15 @@ public class AccountController {
 						cookieSer.delete("user");
 						cookieSer.delete("pass");
 					}
-					
-					
+
 					log.setUser(u);
 					log.setLogin_time(new Date());
 					log.setLogin_out(null);
-					
+
 					logsDao.save(log);
 					return "redirect:/product/addproduct";
 				}
-				
+
 			} else {
 
 				m.addAttribute("errorPassword", true);
@@ -118,87 +115,65 @@ public class AccountController {
 		}
 
 	}
-	//Tesst22
+
+	// Tesst22
 	// Đăng Ký
 	@GetMapping("/account/register")
 	public String getRegister() {
 
-		
 		return "/account/register";
 	}
-	
-	
+
 	public boolean kiemTra(Model m) {
-		
-		
+
 		String fullname = paramSer.getString("fullname", "");
 		String email = paramSer.getString("email", "");
 		String password = paramSer.getString("passwords", "");
-		
-		if(fullname.equalsIgnoreCase("")) {
+
+		if (fullname.equalsIgnoreCase("")) {
 			m.addAttribute("errorNull", true);
 			return false;
 		}
-		if(email.equalsIgnoreCase("")) {
+		if (email.equalsIgnoreCase("")) {
 			m.addAttribute("errorNull", true);
 			return false;
 		}
-		if(password.equalsIgnoreCase("")) {
+		if (password.equalsIgnoreCase("")) {
 			m.addAttribute("errorNull", true);
 			return false;
 		}
-		
+
 		return true;
 	}
-	
+
 	@PostMapping("/account/register")
 	public String CreateAccount(Users u, Model m) {
 		String username = paramSer.getString("email", "");
 		Users ukt = dao.findByUsersEmailObject(username);
-		
-		if(kiemTra(m)) {
-			if(ukt != null) {
+
+		if (kiemTra(m)) {
+			if (ukt != null) {
 				m.addAttribute("errorEmail", true);
-			}else
-			{
+			} else {
 				dao.save(u);
 				m.addAttribute("succ", true);
 			}
 		}
-		
+
 		return "/account/register";
 	}
-	
-	// Lấy mã xác thực
-	@PostMapping("/account/OTP")
-	public String checkOTP(Model m) {
-		String number1 = paramSer.getString("numberOne", "");
-		String number2 = paramSer.getString("numberTwo", "");
-		String number3 = paramSer.getString("numberThree", "");
-		String number4 = paramSer.getString("numberFour", "");
-		String OTP = number1 + number2 + number3 + number4;
-		
-		String ssOTP = ssSer.getAttribute("OTP");
-		if(ssOTP.equalsIgnoreCase(OTP)) {
-			return "/account/changePassword";
-		}else {
-			m.addAttribute("errorNull", true);
-			return "/account/OTP";
-		}
-	}
-	
+
 	// Đổi mật khẩu mới
 	@PostMapping("/account/changepasspro")
 	public String changepasspro(Model m, Users user) {
-		
+
 		String op = paramSer.getString("pass", "");
 		String npa = paramSer.getString("np", "");
 		String npa2 = paramSer.getString("np2", "");
 		Users u = ssSer.getAttribute("user");
 		Users usql = dao.findByUsersEmailObject(u.getEmail());
-		
-		
-		if(op.equalsIgnoreCase(u.getPasswords())&&npa2.equalsIgnoreCase(npa)) {
+
+		if (op.equalsIgnoreCase(u.getPasswords()) && npa2.equalsIgnoreCase(npa)) {
 			user.setUsers_id(usql.getUsers_id());
 			user.setActive(usql.isActive());
 			user.setBlocked(usql.isBlocked());
@@ -209,77 +184,42 @@ public class AccountController {
 			user.setPasswords(npa);
 			user.setPhone(usql.getPhone());
 			user.setRoles(usql.isRoles());
-			
+
 			dao.save(user);
-			m.addAttribute("succRP", true);		
-		}else {
+			m.addAttribute("succRP", true);
+		} else {
 			m.addAttribute("errorNullRP", true);
-		}	
+		}
 		return "redirect:/account/profileUser";
 	}
 
-	
 	// Cập nhật thông tin
-	
-		@PostMapping("/account/updateinfo")
-		public String updateinfo(Model m, Users user) {
-			
-			String f = paramSer.getString("fullname", "");
-			String p = paramSer.getString("phone", "");
-			Users u = ssSer.getAttribute("username");
-			
-				user.setUsers_id(u.getUsers_id());
-				user.setActive(u.isActive());
-				user.setBlocked(u.isBlocked());
-				user.setCreatedate(u.getCreatedate());
-				user.setEmail(u.getEmail());
-				user.setFailed_login_attempts(u.getFailed_login_attempts());
-				user.setFullname(f);
-				user.setPasswords(u.getPasswords());
-				user.setPhone(p);
-				user.setRoles(u.isRoles());
-				
-				dao.save(user);
-				m.addAttribute("succ", true);
-				
-			
-			return "redirect:/account/profileUser";
-		}
-	
-	// Quên mật khẩu
-		
-		@PostMapping("/account/changePassword")
-		public String changePassword(Model m, Users user) {
-			
-			String pass = paramSer.getString("passwords", "");
-			String pass2 = paramSer.getString("passwordsTwo", "");
-			Users u = ssSer.getAttribute("username");
-			
-			if(pass2.equalsIgnoreCase(pass)) {
-				user.setUsers_id(u.getUsers_id());
-				user.setActive(u.isActive());
-				user.setBlocked(u.isBlocked());
-				user.setCreatedate(u.getCreatedate());
-				user.setEmail(u.getEmail());
-				user.setFailed_login_attempts(u.getFailed_login_attempts());
-				user.setFullname(u.getFullname());
-				user.setPasswords(pass2);
-				user.setPhone(u.getPhone());
-				user.setRoles(u.isRoles());
-				
-				dao.save(user);
-				m.addAttribute("succ", true);
-				
-				cookieSer.create("email", u.getEmail(), 10);
-				cookieSer.create("pass", pass, 10);
-				
-			}else {
-				m.addAttribute("errorNull", true);
-			}
-			
-			return "/account/changePassword";
-		}	
-		
+
+	@PostMapping("/account/updateinfo")
+	public String updateinfo(Model m, Users user) {
+
+		String f = paramSer.getString("fullname", "");
+		String p = paramSer.getString("phone", "");
+		Users u = ssSer.getAttribute("username");
+
+		user.setUsers_id(u.getUsers_id());
+		user.setActive(u.isActive());
+		user.setBlocked(u.isBlocked());
+		user.setCreatedate(u.getCreatedate());
+		user.setEmail(u.getEmail());
+		user.setFailed_login_attempts(u.getFailed_login_attempts());
+		user.setFullname(f);
+		user.setPasswords(u.getPasswords());
+		user.setPhone(p);
+		user.setRoles(u.isRoles());
+
+		dao.save(user);
+		m.addAttribute("succ", true);
+
+		return "redirect:/account/profileUser";
+	}
+
+	// chay form quên mật khẩu
 	@GetMapping("/account/forgetPassword")
 	public String index() {
 		return "/account/forgetPassword";
@@ -287,7 +227,6 @@ public class AccountController {
 
 	@PostMapping("/account/forgetPassword")
 	public String SendOTP(Model m) {
-
 		String email = paramSer.getString("email", "");
 		Users u = dao.findByUsersEmailObject(email);
 
@@ -295,19 +234,19 @@ public class AccountController {
 			m.addAttribute("errorNull", true);
 			return "/account/forgetPassword";
 		} else {
-
 			try {
 				int min = 1000;
 				int max = 9999;
 				int randomNumber = (int) (Math.floor(Math.random() * (max - min + 1)) + min);
-				emailSer.sendSimpleEmail(email, 
-				"Xác thực tài khoản email từ Watchtopia Shop",
-				"Xin Chào,                                                                                                                                                                                                                    "
 				
-				+ "Bạn hoặc ai đó đã dùng email này để nhận mã xác thực. Để tiếp tục xử lý tài khoản, vui lòng nhập mã OTP là: " + randomNumber);
-				
+				emailSer.sendSimpleEmail(email, "Xác thực tài khoản email từ Watchtopia Shop",
+						"Xin Chào,                                                                                                                                                                                                                    "
+
+								+ "Bạn hoặc ai đó đã dùng email này để nhận mã xác thực. Để tiếp tục xử lý tài khoản, vui lòng nhập mã OTP là: "
+								+ randomNumber);
+
 				ssSer.setAttribute("user", u);
-				ssSer.setAttribute("OTP",String.valueOf(randomNumber));
+				ssSer.setAttribute("OTP", String.valueOf(randomNumber));
 				ssSer.setAttribute("pass", u.getPasswords());
 				return "/account/OTP";
 			} catch (Exception e) {
@@ -317,7 +256,60 @@ public class AccountController {
 		}
 
 	}
-	
+
+	// Lấy mã xác thực
+	@PostMapping("/account/OTP")
+	public String checkOTP(Model m) {
+		String number1 = paramSer.getString("numberOne", "");
+		String number2 = paramSer.getString("numberTwo", "");
+		String number3 = paramSer.getString("numberThree", "");
+		String number4 = paramSer.getString("numberFour", "");
+		String OTP = number1 + number2 + number3 + number4;
+
+		String ssOTP = ssSer.getAttribute("OTP");
+		if (ssOTP.equalsIgnoreCase(OTP)) {
+			return "/account/changePassword";
+		} else {
+			m.addAttribute("errorNull", true);
+			return "/account/OTP";
+		}
+	}
+
+	// đổi mật khẩu khi xc thực mã OTP
+
+	@PostMapping("/account/changePassword")
+	public String changePassword(Model m, Users user) {
+
+		String pass = paramSer.getString("passwords", "");
+		String pass2 = paramSer.getString("passwordsTwo", "");
+		Users u = ssSer.getAttribute("username");
+
+		if (pass2.equalsIgnoreCase(pass)) {
+			
+			user.setUsers_id(u.getUsers_id());
+			user.setActive(u.isActive());
+			user.setBlocked(u.isBlocked());
+			user.setCreatedate(u.getCreatedate());
+			user.setEmail(u.getEmail());
+			user.setFailed_login_attempts(u.getFailed_login_attempts());
+			user.setFullname(u.getFullname());
+			user.setPasswords(pass2);
+			user.setPhone(u.getPhone());
+			user.setRoles(u.isRoles());
+
+			dao.save(user);
+			m.addAttribute("succ", true);
+
+			cookieSer.create("email", u.getEmail(), 10);
+			cookieSer.create("pass", pass, 10);
+
+		} else {
+			m.addAttribute("errorNull", true);
+		}
+
+		return "/account/changePassword";
+	}
+
 	// Đăng xuất
 	@GetMapping("/account/logout")
 	public String logOut(Logs log) {
@@ -325,30 +317,29 @@ public class AccountController {
 		cookieSer.delete("user");
 		cookieSer.delete("pass");
 		ssSer.setAttribute("usercheck", null);
-		
-		
+
 		Logs Lastlogin = logsDao.findByKeywordsBySQL();
-		
+
 		log.setLog_id(Lastlogin.getLog_id());
- 		log.setUser(Lastlogin.getUser());
- 		log.setLogin_time(Lastlogin.getLogin_time());
+		log.setUser(Lastlogin.getUser());
+		log.setLogin_time(Lastlogin.getLogin_time());
 		log.setLogin_out(new Date());
-		
+
 		logsDao.save(log);
 		return "redirect:/home/watch";
 	}
-	
+
 	// Trang cá nhân
 	@GetMapping("/account/profileUser")
 	public String getProfile(Model m) {
-		
+
 		Users u = ssSer.getAttribute("username");
-		
+
 		m.addAttribute("user", dao.findByUsersEmailObject(u.getEmail()));
-		
+
 		return "/account/profile";
 	}
-	
+
 	// Send Email Contact
 	@PostMapping("/account/sendEmail")
 	public String SendEmail(Model m) {
@@ -357,15 +348,12 @@ public class AccountController {
 			String fullname = paramSer.getString("fullname", "");
 			String phone = paramSer.getString("phone", "");
 			String content = paramSer.getString("content", "");
-			
-			emailSer.sendSimpleEmail(email, 
-			"Feedback Email From Customer",
-			"Xin Chào,                                                                                                                                                                                                                    "
-			
-			+ "Họ và Tên : " + fullname + " "
-			+ content + " - thông tin liên hệ : " + phone);
-			
-			
+
+			emailSer.sendSimpleEmail(email, "Feedback Email From Customer",
+					"Xin Chào,                                                                                                                                                                                                                    "
+
+							+ "Họ và Tên : " + fullname + " " + content + " - thông tin liên hệ : " + phone);
+
 			return "redirect:/home/watch";
 		} catch (Exception e) {
 			return "redirect:/home/watch";

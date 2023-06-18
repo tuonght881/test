@@ -46,7 +46,7 @@ public class ProductController {
 	@GetMapping("/product/addproduct")
 	public String GetAddProduct(Model m) {
 		
-		List<Branch> branchs = branchDAO.findAll();
+		List<Branch> branchs = branchDAO.findAll(); //lay tu csdl
 		List<ProductType> types = typeDAO.findAll();
 		
 		m.addAttribute("types", types);
@@ -101,6 +101,22 @@ public class ProductController {
 		///
 	}
 	
+	@PostMapping("/product/updateProduct")
+	public String update(Products item)  {
+		
+		int id = ss.getAttribute("id");
+		
+		Products find = dao.findById(id).get();
+		String img = param.getString("product_img", "");
+		
+		item.setProduct_id(find.getProduct_id());
+		item.setProduct_img(img);
+		item.setBranch(find.getBranch());
+		item.setType(find.getType());
+		
+		dao.saveAndFlush(item);
+		return "redirect:/product/edit/" + item.getProduct_id();
+	}
 	@RequestMapping("/product/edit/{id}")
 	public String edit(Model m, @PathVariable("id") Integer id) {
 		Products item = dao.findById(id).get();
@@ -119,22 +135,7 @@ public class ProductController {
 		return "/admin/UpdateProduct";
 	}
 	
-	@PostMapping("/product/updateProduct")
-	public String update(Products item)  {
-		
-		int id = ss.getAttribute("id");
-		
-		Products find = dao.findById(id).get();
-		String img = param.getString("product_img", "");
-		
-		item.setProduct_id(find.getProduct_id());
-		item.setProduct_img(img);
-		item.setBranch(find.getBranch());
-		item.setType(find.getType());
-		
-		dao.saveAndFlush(item);
-		return "redirect:/product/edit/" + item.getProduct_id();
-	}
+	
 	
 	@RequestMapping("/product/delete/{id}")
 	public String delete(@PathVariable("id") Integer id) {

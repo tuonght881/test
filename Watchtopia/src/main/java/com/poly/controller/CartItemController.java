@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.poly.DAO.CartItemDAO;
+import com.poly.DAO.InventoryDAO;
 import com.poly.DAO.OrderDAO;
 import com.poly.DAO.OrderDetailDAO;
 import com.poly.DAO.ProductDAO;
 import com.poly.entity.CartItem;
+import com.poly.entity.Inventory;
 import com.poly.entity.Order;
 import com.poly.entity.OrderDetail;
 import com.poly.entity.Products;
@@ -44,6 +46,9 @@ public class CartItemController {
 
 	@Autowired
 	OrderDetailDAO orderDetailDao;
+	
+	@Autowired
+	InventoryDAO invenDao;
 
 	@Autowired
 	ParamService param;
@@ -186,6 +191,12 @@ public class CartItemController {
 			// insert vo bang order detail
 			// test222
 			for (int i = 0; i < lisst.size(); i++) {
+				
+				Inventory inventory = invenDao.findObject(lisst.get(i).getProduct().getProduct_id());
+				inventory.setQuantity(inventory.getQuantity() - lisst.get(i).getQuantity());
+				
+				invenDao.save(inventory);
+				
 				Order orFind = orderDao.findTop1BySQL();
 				OrderDetail orderDetail = new OrderDetail();
 				orderDetail.setOrder(orFind);
