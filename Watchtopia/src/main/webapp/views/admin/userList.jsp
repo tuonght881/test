@@ -219,7 +219,7 @@
 							<td>${list.passwords}</td>
 							<td>${list.email}</td>
 							<td>${list.phone}</td>
-							<td><a href="/amdin/deleteUser/${list.users_id}">Xóa</a></td>
+<%-- 							<td><a href="/amdin/deleteUser/${list.users_id}">Xóa</a></td> --%>
 						</tr>
 					</c:forEach>
 				</tbody>
