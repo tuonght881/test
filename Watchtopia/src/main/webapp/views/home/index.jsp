@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <html>
 <head>
 <meta charset="UTF-8">
@@ -173,7 +174,8 @@
 								<div class="detail-box">
 									<h6>${item.product_name}</h6>
 									<h6>
-										Giá: <span> ${item.product_price} VNĐ </span>
+									<fmt:parseNumber var="price" type="number" value="${item.product_price}" />  
+										Giá: <span> ${price} VNĐ </span>
 									</h6>
 								</div>
 								<div class="new">
@@ -194,7 +196,8 @@
 									<div class="detail-box">
 										<h6>${p.product_name}</h6>
 										<h6>
-											Giá: <span> ${p.product_price} VNĐ </span>
+										<fmt:parseNumber var="price" type="number" value="${p.product_price}" /> 
+											Giá: <span> ${price} VNĐ </span>
 										</h6>
 									</div>
 									<div class="new">

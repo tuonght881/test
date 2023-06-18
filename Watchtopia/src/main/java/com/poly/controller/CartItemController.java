@@ -23,6 +23,7 @@ import com.poly.entity.Order;
 import com.poly.entity.OrderDetail;
 import com.poly.entity.Products;
 import com.poly.entity.Users;
+import com.poly.service.EmailSenderService;
 import com.poly.service.ParamService;
 import com.poly.service.SessionService;
 import com.poly.service.ShoppingCart;
@@ -46,12 +47,15 @@ public class CartItemController {
 
 	@Autowired
 	OrderDetailDAO orderDetailDao;
-	
+
 	@Autowired
 	InventoryDAO invenDao;
 
 	@Autowired
 	ParamService param;
+	
+	@Autowired
+	EmailSenderService sendEmail;
 
 	// init cart
 	@RequestMapping("/cart/view")
@@ -114,9 +118,22 @@ public class CartItemController {
 	}
 
 	@RequestMapping("/cart/buy/{id}")
-	public String buy(@PathVariable("id") Integer id) {
-		cart.add(id);
-		return "redirect:/cart/view";
+	public String buy(@PathVariable("id") Integer id, Model m) {
+		String ucheck = ss.getAttribute("usercheck");
+
+		if (ucheck == null) {
+			m.addAttribute("userNull", true);
+			m.addAttribute("hidden", false);
+			Products p = productDAO.findByKeywordsBySQL();
+			List<Products> items = productDAO.findByKeywordsAllBySQL();
+			m.addAttribute("item", p);
+			m.addAttribute("items", items);
+			return "/home/index";
+		} else {
+			cart.add(id);
+			return "redirect:/cart/view";
+		}
+
 	}
 
 	@RequestMapping("/cart/remove/{id}")
@@ -191,12 +208,12 @@ public class CartItemController {
 			// insert vo bang order detail
 			// test222
 			for (int i = 0; i < lisst.size(); i++) {
-				
+
 				Inventory inventory = invenDao.findObject(lisst.get(i).getProduct().getProduct_id());
 				inventory.setQuantity(inventory.getQuantity() - lisst.get(i).getQuantity());
-				
+
 				invenDao.save(inventory);
-				
+
 				Order orFind = orderDao.findTop1BySQL();
 				OrderDetail orderDetail = new OrderDetail();
 				orderDetail.setOrder(orFind);
@@ -207,12 +224,11 @@ public class CartItemController {
 				cartDao.deleteById(lisst.get(i).getCart_id());
 			}
 			
-	
-			
-		}else {
+			sendEmail.sendSimpleEmail(u.getEmail(), "Watchtopia cảm ơn", "Cảm ơn bạn đã tin tưởng và sử dụng dịch vụ của chúng tôi.");
+
+		} else {
 			try {
 				double tongTien = 0;
-				
 
 				List<CartItem> item = cartDao.findAllBySQL(u.getUsers_id());
 				List<CartItem> cartQuantity = cartDao.findAllBySQL(u.getUsers_id());

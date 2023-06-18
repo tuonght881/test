@@ -113,19 +113,19 @@
 										<div class="col">
 											<label for="">Họ và tên</label> <input type="text"
 												name="fullname" value="${user.fullname}"
-												class="form-control" placeholder="Fullname">
+												class="form-control" placeholder="Fullname" required>
 										</div>
 										<div class="col">
 											<label for="">Email</label> <input type="text" name="email"
 												value="${user.email}" class="form-control"
-												placeholder="Email" disabled>
+												placeholder="Email" disabled >
 										</div>
 									</div>
 									<div class="row" style="margin-top: 20px; margin-bottom: 20px;">
 										<div class="col">
 											<label for="">Số điện thoại</label> <input type="text"
 												name="phone" value="${user.phone }" class="form-control"
-												placeholder="Phone">
+												placeholder="Phone" required maxlength="10" minlength="10" pattern="0[0-9]{9}">
 										</div>
 										<div class="col">
 											<label for="">Mật khẩu</label> <input type="password"
@@ -168,7 +168,7 @@
 							khẩu cũ</label>
 						<div class="col-sm-10">
 							<input type="password" name="pass" class="form-control"
-								id="inputEmail3">
+								id="inputEmail3" required>
 						</div>
 					</div>
 					<div class="row mb-3">
@@ -176,7 +176,7 @@
 							khẩu mới</label>
 						<div class="col-sm-10">
 							<input type="password" name="np" class="form-control"
-								id="inputPassword3">							
+								id="inputPassword3" required>							
 						</div>
 					</div>
 					<div class="row mb-3">
@@ -185,7 +185,7 @@
 						<div class="col-sm-10">
 							<input type="password" name="np2" class="form-control"
 								id="inputPassword34">
-								<input type="checkbox" onclick="showpass2()"> Show Password
+								<input type="checkbox" onclick="showpass2()" required> Show Password
 						</div>
 					</div>
 					<div class="row mb-3">
