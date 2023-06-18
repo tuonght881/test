@@ -72,11 +72,17 @@ public class HomeController {
 		if(ucheck==null) {
 			m.addAttribute("hidden", false);
 			List<Products> items = dao.findByKeywordsAllBySQL(search);
+			if (items.isEmpty()) {
+				items = dao.findByKeywordsAllBySQL();
+			}
 			m.addAttribute("item", null);
 			m.addAttribute("items", items);
 		}else {
 			m.addAttribute("hidden",true);
 			List<Products> items = dao.findByKeywordsAllBySQL(search);
+			if (items.isEmpty()) {
+				items = dao.findByKeywordsAllBySQL();
+			}
 			m.addAttribute("item", null);
 			m.addAttribute("items", items);
 		}
