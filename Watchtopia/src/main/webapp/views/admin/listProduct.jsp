@@ -218,24 +218,7 @@
 			</c:if>
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6">
-						<div class="box">
-							
-								<div class="img-box">
-									<img src="/img/${item.product_img}" alt="">
-								</div>
-								<div class="detail-box">
-									<h6>${item.product_name}</h6>
-									<h6>
-										Giá: <span> ${item.product_price} VNĐ </span>
-									</h6>
-								</div>
-								<div class="new">
-									<span> Nổi Bật </span>
-								</div>
-							
-						</div>
-					</div>
+					
 					<c:forEach var="p" items="${items}">
 						<div class="col-sm-6 col-xl-3">
 

@@ -204,10 +204,11 @@ public class CartItemController {
 				orderDetail.setQuantity(lisst.get(i).getQuantity());
 
 				orderDetailDao.save(orderDetail);
+				cartDao.deleteById(lisst.get(i).getCart_id());
 			}
 			
 	
-			cartDao.deleteAll();
+			
 		}else {
 			try {
 				double tongTien = 0;

@@ -139,6 +139,8 @@ public class ProductController {
 	
 	@RequestMapping("/product/delete/{id}")
 	public String delete(@PathVariable("id") Integer id) {
+		Inventory inven = inventoryDao.findObject(id);
+		inventoryDao.deleteById(inven.getId());
 		dao.deleteById(id);
 		return "redirect:/product/UpdateProduct";
 	}
@@ -147,9 +149,9 @@ public class ProductController {
 	
 	@GetMapping("/product/listproduct") 
 	public String getListProduct(Model m) {
-		Products p = dao.findByKeywordsBySQL();
-		List<Products> items = dao.findByKeywordsAllBySQL();
-		m.addAttribute("item", p);
+//		
+		List<Products> items = dao.findAll();
+		
 		m.addAttribute("items", items);
 		return "/admin/listProduct";
 	}

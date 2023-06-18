@@ -45,7 +45,7 @@ public class HomeController {
 	@GetMapping("/home/watch")
 	public String getHome(Model m) {
 		Products p = dao.findByKeywordsBySQL();
-//		String ucheck = cook.getValue("checkEmail");
+
 		String ucheck = ssSer.getAttribute("usercheck");
 		if(ucheck == null) {
 			m.addAttribute("hidden", false);

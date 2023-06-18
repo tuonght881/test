@@ -16,7 +16,7 @@ public interface ProductDAO extends JpaRepository<Products, Integer>{
 	@Query(value = "select top 1 * from product p order by p.product_id desc" , nativeQuery = true)
 	Products findTop1ProductIdBySQL();
 	
-	@Query(value = "select * from product p where p.product_price not in (select MIN(p.product_price) from product p)" , nativeQuery = true)
+	@Query(value = "select * from product p where p.product_id not in (select i.product_id from inventory i where i.quantity = 0) and p.product_price not in (select min(p.product_price) from product p)" , nativeQuery = true)
 	List<Products> findByKeywordsAllBySQL();
 	
 	@Query(value = "select * from product p where p.product_name like ?1" , nativeQuery = true)
