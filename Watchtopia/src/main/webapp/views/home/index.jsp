@@ -69,8 +69,9 @@
 					</a>
 					<div class="right-item d-flex ml-auto">
 						<div class="find container">
-							<input placeholder="Nhập tên đồng hồ ..." required=""
-								class="input" name="text" type="text">
+							<form action="/home/search">
+							<input placeholder="Nhập tên đồng hồ đi..." required=""
+								class="input" name="search" type="text" ></form>
 							<div class="icon">
 								<i class="fa-brands fa-searchengin"></i>
 							</div>
@@ -162,6 +163,7 @@
 					<h2>Đồng Hồ Mới Nhất</h2>
 				</div>
 				<div class="row">
+				<c:if test="${item!=null }">
 					<div class="col-md-6">
 						<div class="box">
 							<a href="/home/detailWatched/${item.product_id}">
@@ -180,6 +182,7 @@
 							</a>
 						</div>
 					</div>
+					</c:if>
 					<c:forEach var="p" items="${items}">
 						<div class="col-sm-6 col-xl-3">
 

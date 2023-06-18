@@ -170,7 +170,7 @@ public class AccountController {
 		String op = paramSer.getString("pass", "");
 		String npa = paramSer.getString("np", "");
 		String npa2 = paramSer.getString("np2", "");
-		Users u = ssSer.getAttribute("user");
+		Users u = ssSer.getAttribute("username");
 		Users usql = dao.findByUsersEmailObject(u.getEmail());
 
 		if (op.equalsIgnoreCase(u.getPasswords()) && npa2.equalsIgnoreCase(npa)) {

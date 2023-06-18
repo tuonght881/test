@@ -21,13 +21,13 @@ public class AuthInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		String uri = request.getRequestURI();
-		Users user = session.getAttribute("username"); // lấy từ session
+		Users user = (Users) session.getAttribute("username"); // lấy từ session
 		String error = "";
 		if (user == null) { // chưa đăng nhập
 			error = "Please login!";
 		}
 		// không đúng vai trò
-		else if (!user.isRoles() && uri.startsWith("/admin/")) {
+		else if ((!user.isRoles() && uri.startsWith("/admin/"))||(!user.isRoles() && uri.startsWith("/product/"))) {
 			error = "Access denied!";
 		}
 		if (error.length() > 0) { // có lỗi
